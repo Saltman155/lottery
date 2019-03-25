@@ -1,8 +1,10 @@
 package com.superywd.lottery.main;
 
+
 /**
- * Hello world!
- *
+ * 后端服务器启动类
+ * @author: 迷宫的中心
+ * @date: 2019/03/25 10:56
  */
 public class App 
 {
