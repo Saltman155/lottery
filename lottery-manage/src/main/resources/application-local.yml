@@ -17,17 +17,17 @@ spring:
       #测试连接
       connection-test-query: SELECT 1
     master:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: root
       password: scanf
     slave1:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: only_read
       password: scanf
     slave2:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: only_read
       password: scanf

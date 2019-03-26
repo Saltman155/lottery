@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 
 @EnableTransactionManagement
 @Configuration
-@MapperScan({"com.superywd.lottery.manage.dao"})
+@MapperScan({"com.superywd.lottery.manage.dao.**"})
 public class MyBatisConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(MyBatisConfig.class);
