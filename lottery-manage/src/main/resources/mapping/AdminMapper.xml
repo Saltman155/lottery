@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.superywd.lottery.manage.dao.AdminDao">
+    <resultMap id="BaseResultMap" type="com.superywd.lottery.manage.model.TbAdmin">
+        <result column="login_email" property="loginEmail" jdbcType="VARCHAR" />
+        <result column="login_password" property="loginPassword" jdbcType="VARCHAR"/>
+        <result column="identity" property="identity" jdbcType="INTEGER"/>
+        <association property="userInfo" column="user_id"
+                     select="com.superywd.lottery.manage.dao.UserDao.selectUserById"/>
+    </resultMap>
+
+    <sql id="base_sql">
+        admin.login_email AS login_email,admin.login_password AS login_password,admin.identity AS `identity`
+    </sql>
+    <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+          <include refid="base_sql"/>
+        FROM admin
+        WHERE
+          admin.login_email = #{email} AND
+          admin.isvalid = 1
+    </select>
+</mapper>
