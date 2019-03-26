@@ -1,1 +1,18 @@
+#web容器配置
+server:
+  port: 10015
+  servlet:
+    context-path: /lottery
+#mybatis配置
+mybatis:
+  type-aliases-package: com.superywd.lottery.manage.model
+  mapper-locations: classpath:mapping/*.xml
+#spring框架配置
+spring:
+  application:
+    name: lottery
+  jmx:
+    default-domain: lottery
+  mvc:
+    static-path-pattern: /**
 
