@@ -1,6 +1,6 @@
 #web容器配置
 server:
-  port: 10015
+  port: 7659
   servlet:
     context-path: /lottery
 #mybatis配置
@@ -13,6 +13,10 @@ spring:
     name: lottery
   jmx:
     default-domain: lottery
-  mvc:
-    static-path-pattern: /**
+#  mvc:
+#    static-path-pattern: /**
+#  resources:
+#    static-locations: classpath:/static/
+
+
 
