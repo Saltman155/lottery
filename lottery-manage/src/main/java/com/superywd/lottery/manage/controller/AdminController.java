@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -34,13 +34,12 @@ public class AdminController {
      * @param password      登录密码
      * @param explainTime   会话有效期，默认为6小时
      */
-    @RequestMapping(path = "/login",method = RequestMethod.GET)
+    @RequestMapping(path = "/login",method = RequestMethod.POST)
     public Object login(
             HttpSession session,
             @RequestParam(name = "email")String email,
             @RequestParam(name = "password")String password,
             @RequestParam(name = "explainTime",required = false,defaultValue = "21600")Integer explainTime) throws Exception{
-        ResultPack result = null;
         if(!email.matches(RegexUtil.CURRENT_EMAIL_REGEX)){
             throw new Exception("错误的邮箱信息！");
         }
@@ -49,12 +48,24 @@ public class AdminController {
         }
         boolean judge = adminService.adminLogin(email,password);
         if(judge){
-            session.setAttribute("email",email);
-            //设置session失效时间，最多7天
+            logger.debug("用户 {} 的登录校验成功",email);
+            //设置session以及失效时间，最多7天
+            session.setAttribute("loginEmail",email);
             session.setMaxInactiveInterval(Math.min(604800,explainTime));
             return ResultPack.successInstance();
         }else{
             return ResultPack.failInstance(-1,"账号或密码错误");
         }
+    }
+
+    /**
+     * 退出登录
+     * @param session       会话对象
+     * @return              返回数据包
+     */
+    @RequestMapping(path = "/exit",method = RequestMethod.GET)
+    public Object exit(HttpSession session){
+        session.setAttribute("loginEmail",null);
+        return ResultPack.successInstance();
     }
 }

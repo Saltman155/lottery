@@ -615,7 +615,7 @@ var App = function() {
         if ($date.getFullYear() === 2015) {
             $yearCopy.html('2015');
         } else {
-            $yearCopy.html('2015-' + $date.getFullYear().toString().substr(2,2));
+            $yearCopy.html('2015-' + $date.getFullYear().toString().substr(0,4));
         }
     };
 
