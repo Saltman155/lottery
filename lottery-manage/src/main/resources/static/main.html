@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-focus" lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+
+    <title>抽奖活动管理系统</title>
+
+    <meta name="description" content="OneUI - Admin Dashboard Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
+
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-192x192.png" sizes="192x192">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+
+</head>
+<body>
+
+<div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+    <!-- 右侧隐藏功能栏-->
+    <aside id="side-overlay">
+        <div id="side-overlay-scroll">
+            <!-- Side Header -->
+            <div class="side-header side-content">
+                <button class="btn btn-default pull-right" type="button" data-toggle="layout" data-action="side_overlay_close">
+                    <i class="fa fa-times"></i>
+                </button>
+                <span>
+                    <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar10.jpg" alt="">
+                    <span class="font-w600 push-10-l">这里是用户名</span>
+                </span>
+            </div>
+            <div class="side-content remove-padding-t">
+                <!-- Side Overlay Tabs -->
+                <div class="block pull-r-l border-t">
+                    <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
+                        <li class="active"><a href="#tabs-side-overlay-overview"><i class="fa fa-fw fa-coffee"></i>&nbsp;近期发布</a></li>
+                        <li><a href="#tabs-side-overlay-sales"><i class="fa fa-fw fa-line-chart"></i> 统计</a></li>
+                    </ul>
+                    <div class="block-content tab-content">
+                        <!-- 近期发布 Tab -->
+                        <div class="tab-pane fade fade-right in active" id="tabs-side-overlay-overview">
+                            <!-- 我发布的活动 -->
+                            <div class="block pull-r-l">
+                                <div class="block-header bg-gray-lighter">
+                                    <ul class="block-options">
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                        </li>
+                                    </ul>
+                                    <h3 class="block-title">我发布的活动</h3>
+                                </div>
+                                <div class="block-content">
+                                    <!-- 活动列表 -->
+                                    <ul class="list list-activity">
+                                        <li>
+                                            <i class="si si-wallet text-success"></i>
+                                            <div class="font-w600">New sale ($15)</div>
+                                            <div><a href="javascript:void(0)">Admin Template</a></div>
+                                            <div><small class="text-muted">3 min ago</small></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 我创建的策略 -->
+                            <div class="block pull-r-l">
+                                <div class="block-header bg-gray-lighter">
+                                    <ul class="block-options">
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                        </li>
+                                    </ul>
+                                    <h3 class="block-title">我创建的策略</h3>
+                                </div>
+                                <div class="block-content block-content-full">
+                                    <!-- 策略列表 -->
+                                    <ul class="nav-users remove-margin-b">
+                                        <li>
+                                            <a href="base_pages_profile.html">
+                                                <img class="img-avatar" src="assets/img/avatars/avatar6.jpg" alt="">
+                                                <i class="fa fa-circle text-success"></i> Sara Holland
+                                                <div class="font-w400 text-muted"><small>Copywriter</small></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="base_pages_profile.html">
+                                                <img class="img-avatar" src="assets/img/avatars/avatar9.jpg" alt="">
+                                                <i class="fa fa-circle text-success"></i> Vincent Sims
+                                                <div class="font-w400 text-muted"><small>Web Developer</small></div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- END Users Navigation -->
+                                </div>
+                            </div>
+                            <!-- 快速设置 -->
+                            <div class="block pull-r-l">
+                                <div class="block-header bg-gray-lighter">
+                                    <ul class="block-options">
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                        </li>
+                                    </ul>
+                                    <h3 class="block-title">快速设置</h3>
+                                </div>
+                                <div class="block-content">
+                                    <!-- 设置表单 -->
+                                    <form class="form-bordered" action="base_pages_dashboard.html" method="post" onsubmit="return false;">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-xs-8">
+                                                    <div class="font-s13 font-w600">Online Status</div>
+                                                    <div class="font-s13 font-w400 text-muted">Show your status to all</div>
+                                                </div>
+                                                <div class="col-xs-4 text-right">
+                                                    <label class="css-input switch switch-sm switch-primary push-10-t">
+                                                        <input type="checkbox"><span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 统计 Tab -->
+                        <div class="tab-pane fade fade-left" id="tabs-side-overlay-sales">
+                            <div class="block pull-r-l">
+                                <!-- Stats -->
+                                <div class="block-content pull-t">
+                                    <div class="row items-push">
+                                        <div class="col-xs-6">
+                                            <div class="font-w700 text-gray-darker text-uppercase">Sales</div>
+                                            <a class="h3 font-w300 text-primary" href="javascript:void(0)">22030</a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="font-w700 text-gray-darker text-uppercase">Balance</div>
+                                            <a class="h3 font-w300 text-primary" href="javascript:void(0)">$ 4.589,00</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END Stats -->
+
+                                <!-- Today -->
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <span class="font-w600 font-s13 text-gray-darker text-uppercase">Today</span>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <span class="font-s13 text-muted">$996</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <ul class="list list-activity pull-r-l">
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $249</div>
+                                            <div><small class="text-muted">3 min ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $129</div>
+                                            <div><small class="text-muted">50 min ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $119</div>
+                                            <div><small class="text-muted">2 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $499</div>
+                                            <div><small class="text-muted">3 hours ago</small></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- END Today -->
+
+                                <!-- Yesterday -->
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <span class="font-w600 font-s13 text-gray-darker text-uppercase">Yesterday</span>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <span class="font-s13 text-muted">$765</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <ul class="list list-activity pull-r-l">
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $249</div>
+                                            <div><small class="text-muted">26 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-danger"></i>
+                                            <div class="font-w600">Product Purchase - $50</div>
+                                            <div><small class="text-muted">28 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $119</div>
+                                            <div><small class="text-muted">29 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-danger"></i>
+                                            <div class="font-w600">Paypal Withdrawal - $300</div>
+                                            <div><small class="text-muted">37 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $129</div>
+                                            <div><small class="text-muted">39 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $119</div>
+                                            <div><small class="text-muted">45 hours ago</small></div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-circle text-success"></i>
+                                            <div class="font-w600">New sale! + $499</div>
+                                            <div><small class="text-muted">46 hours ago</small></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- END Yesterday -->
+
+                                <!-- More -->
+                                <div class="text-center">
+                                    <small><a href="javascript:void(0)">Load More..</a></small>
+                                </div>
+                                <!-- END More -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- 左侧功能栏 -->
+    <nav id="sidebar">
+        <!-- Sidebar Scroll Container -->
+        <div id="sidebar-scroll">
+            <!-- Sidebar Content -->
+            <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
+            <div class="sidebar-content">
+                <!-- Side Header -->
+                <div class="side-header side-content bg-white-op">
+                    <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                    <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
+                    <div class="btn-group pull-right">
+                        <ul class="dropdown-menu dropdown-menu-right font-s13 sidebar-mini-hide">
+                            <li>
+                                <a data-toggle="theme" data-theme="default" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-default pull-right"></i> <span class="font-w600">Default</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="theme" data-theme="assets/css/themes/amethyst.min.css" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-amethyst pull-right"></i> <span class="font-w600">Amethyst</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="theme" data-theme="assets/css/themes/city.min.css" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-city pull-right"></i> <span class="font-w600">City</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="theme" data-theme="assets/css/themes/flat.min.css" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-flat pull-right"></i> <span class="font-w600">Flat</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="theme" data-theme="assets/css/themes/modern.min.css" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-modern pull-right"></i> <span class="font-w600">Modern</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="theme" data-theme="assets/css/themes/smooth.min.css" tabindex="-1" href="javascript:void(0)">
+                                    <i class="fa fa-circle text-smooth pull-right"></i> <span class="font-w600">Smooth</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="h5 text-white" href="index.html">
+                        <i class="fa fa-circle-o-notch text-primary"></i> <span class="h5 font-w600 sidebar-mini-hide">&nbsp;抽奖活动管理系统</span>
+                    </a>
+                </div>
+                <!-- END Side Header -->
+
+                <!-- 左侧功能栏 -->
+                <div class="side-content">
+                    <ul class="nav-main">
+                        <li>
+                            <a class="active" href="#"><i class="si si-home"></i><span class="sidebar-mini-hide">系统主页</span></a>
+                        </li>
+                        <!--活动管理-->
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                <i class="si si-grid"></i><span class="sidebar-mini-hide">活动管理</span>
+                            </a>
+                            <ul>
+                                <li><a href="#">活动列表</a></li>
+                                <li><a href="#">活动登记</a></li>
+                            </ul>
+                        </li>
+                        <!--用户管理-->
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                <i class="si si-users"></i><span class="sidebar-mini-hide">用户管理</span>
+                            </a>
+                            <ul>
+                                <li><a href="#">用户列表</a></li>
+                                <li><a href="#">待定操作</a></li>
+                            </ul>
+                        </li>
+                        <!--策略管理-->
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                <i class="fa fa-pie-chart"></i><span class="sidebar-mini-hide">策略管理</span>
+                            </a>
+                            <ul>
+                                <li><a href="#">策略列表</a></li>
+                                <li><a href="#">策略编辑</a></li>
+                            </ul>
+                        </li>
+                        <!--关于系统-->
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                                <i class="si si-layers"></i><span class="sidebar-mini-hide">关于系统</span>
+                            </a>
+                            <ul>
+                                <li><a href="#">系统说明</a></li>
+                                <li><a href="#">问题反馈</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- 顶部功能栏 -->
+    <header id="header-navbar" class="content-mini content-mini-full">
+        <!-- 靠右的按钮 -->
+        <ul class="nav-header pull-right">
+            <li>
+                <div class="btn-group">
+                    <button class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
+                        <img src="assets/img/avatars/avatar10.jpg" alt="Avatar">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-header">设置</li>
+                        <li>
+                            <a tabindex="-1" href="#">
+                                <i class="si si-user pull-right"></i>个人信息
+                            </a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="javascript:void(0)">
+                                <i class="si si-settings pull-right"></i>系统设置
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">操作</li>
+                        <li>
+                            <a tabindex="-1" data-toggle="modal" data-target="#modal-login-out" href="#">
+                                <i class="si si-logout pull-right"></i>
+                                退出系统
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                <button class="btn btn-default" data-toggle="layout" data-action="side_overlay_toggle" type="button">
+                    <i class="fa fa-tasks"></i>
+                </button>
+            </li>
+        </ul>
+        <!-- 靠左的按钮 -->
+        <ul class="nav-header pull-left">
+            <li class="hidden-xs hidden-sm">
+                <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                <button class="btn btn-default" data-toggle="layout" data-action="sidebar_mini_toggle" type="button">
+                    <i class="fa fa-ellipsis-v"></i>
+                </button>
+            </li>
+        </ul>
+        <!-- END Header Navigation Left -->
+    </header>
+    <!-- 页面主体 -->
+    <main id="main-container">
+        <!-- 主体头部 -->
+        <div class="content bg-gray-lighter">
+            <div class="row items-push">
+                <div class="col-sm-7">
+                    <h1 class="page-heading">主页<small>&nbsp;&nbsp;&nbsp;这是一个朴实无华的主页...</small></h1>
+                </div>
+            </div>
+        </div>
+        <!--主体内容-->
+        <div class="content">
+        </div>
+    </main>
+    <!-- 页面底部 -->
+    <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+        <div class="pull-left">
+            <a class="font-w600" href="http://goo.gl/6LF10W" target="_blank">OneUI 3.1</a> &copy; <span class="js-year-copy"></span>
+        </div>
+    </footer>
+
+    <!--退出登录的模态框-->
+    <div class="modal fade" id="modal-login-out" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-popout" style="width: 300px">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent remove-margin-b">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">操作确认</h3>
+                    </div>
+                    <div class="block-content"><p>你真的要退出系统吗？</p></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">取消</button>
+                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" v-on:click="loginOut">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="assets/js/core/vue.min.js"></script>
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/core/jquery.slimscroll.min.js"></script>
+<script src="assets/js/core/jquery.scrollLock.min.js"></script>
+<script src="assets/js/core/jquery.appear.min.js"></script>
+<script src="assets/js/core/jquery.countTo.min.js"></script>
+<script src="assets/js/core/jquery.placeholder.min.js"></script>
+<script src="assets/js/core/js.cookie.min.js"></script>
+<script src="assets/js/app.js"></script>
+<!-- 页面js逻辑脚本 -->
+<script src="assets/js/pages/main.js"></script>
+
+</body>
+</html>

@@ -33,11 +33,11 @@ var BasePagesLogin = function() {
             },
             messages: {
                 'login-username': {
-                    required: '请输入登录邮箱',
+                    required: '请输入登录邮箱！',
                     email: '请输入正确的邮箱！'
                 },
                 'login-password': {
-                    required: '请输入用户密码',
+                    required: '请输入用户密码！',
                     minlength: '请输入正确的密码！'
                 }
             },
@@ -73,11 +73,7 @@ var BasePagesLogin = function() {
                     data:formData,
                     success:function (data) {
                         if(data.code === 0){
-                            // var value = Cookies.get({name:'JSESSIONID',path:'lottery'});
-                            // alert(value);
-
                             window.location.href = "./index.html";
-                            // Cookies.set('JSESSIONID', '12345', { expires:7,path:'/lottery'});
                         }else{
                             alert(data.message);
                         }
