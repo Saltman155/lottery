@@ -2,8 +2,8 @@ package com.superywd.lottery.manage.utils;
 
 /**
  * 各种正则表达式
- * @author: 迷宫的中心
- * @date: 2019/3/28 11:46
+ * @author 迷宫的中心
+ * @date 2019/3/28 11:46
  */
 public class RegexUtil {
 

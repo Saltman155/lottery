@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 15:42
+ * @author 迷宫的中心
+ * @date 2019/3/26 15:42
  */
 @RequestMapping(path = "/test")
 @RestController

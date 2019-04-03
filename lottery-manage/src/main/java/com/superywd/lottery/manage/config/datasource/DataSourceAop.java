@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 11:21
+ * @author 迷宫的中心
+ * @date 2019/3/26 11:21
  */
 
 @Aspect

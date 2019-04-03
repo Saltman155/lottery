@@ -6,8 +6,8 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
  * 自定义数据源
- * @author: 迷宫的中心
- * @date: 2019/3/26 13:19
+ * @author 迷宫的中心
+ * @date 2019/3/26 13:19
  */
 public class MyRoutingDataSource extends AbstractRoutingDataSource {
 

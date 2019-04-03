@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/28 13:26
+ * @author 迷宫的中心
+ * @date 2019/3/28 13:26
  */
 public class LoginCheckInterceptor implements HandlerInterceptor {
 

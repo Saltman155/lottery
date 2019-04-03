@@ -1,8 +1,8 @@
 package com.superywd.lottery.manage.service;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/28 11:28
+ * @author 迷宫的中心
+ * @date 2019/3/28 11:28
  */
 public interface AdminService {
 

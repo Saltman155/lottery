@@ -4,8 +4,8 @@ import com.superywd.lottery.manage.model.TbUser;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 14:19
+ * @author 迷宫的中心
+ * @date 2019/3/26 14:19
  */
 public interface UserDao {
 

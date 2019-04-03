@@ -13,8 +13,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 /**
  * 控制器抛出的异常控制
- * @author: 迷宫的中心
- * @date: 2019/3/28 11:52
+ * @author 迷宫的中心
+ * @date 2019/3/28 11:52
  */
 
 @ControllerAdvice

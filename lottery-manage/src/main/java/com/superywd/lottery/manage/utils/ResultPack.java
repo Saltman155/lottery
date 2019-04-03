@@ -1,8 +1,8 @@
 package com.superywd.lottery.manage.utils;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/28 11:35
+ * @author 迷宫的中心
+ * @date 2019/3/28 11:35
  */
 public class ResultPack {
 

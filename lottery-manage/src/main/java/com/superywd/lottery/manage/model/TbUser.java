@@ -2,8 +2,8 @@ package com.superywd.lottery.manage.model;
 
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 14:22
+ * @author 迷宫的中心
+ * @date 2019/3/26 14:22
  */
 public class TbUser {
 

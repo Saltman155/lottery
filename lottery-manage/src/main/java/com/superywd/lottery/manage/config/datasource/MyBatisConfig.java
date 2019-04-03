@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 13:32
+ * @author 迷宫的中心
+ * @date 2019/3/26 13:32
  */
 
 @EnableTransactionManagement

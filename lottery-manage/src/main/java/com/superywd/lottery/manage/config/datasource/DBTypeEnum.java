@@ -1,8 +1,8 @@
 package com.superywd.lottery.manage.config.datasource;
 
 /**
- * @author: 迷宫的中心
- * @date: 2019/3/26 13:16
+ * @author 迷宫的中心
+ * @date 2019/3/26 13:16
  */
 public enum DBTypeEnum {
     //主库

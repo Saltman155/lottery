@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  * 管理员控制器
- * @author: 迷宫的中心
- * @date: 2019/3/28 11:17
+ * @author 迷宫的中心
+ * @date 2019/3/28 11:17
  */
 @RequestMapping(path = "/admin")
 @RestController

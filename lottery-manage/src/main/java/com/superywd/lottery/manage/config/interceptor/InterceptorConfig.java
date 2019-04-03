@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 拦截器配置
- * @author: 迷宫的中心
- * @date: 2019/3/28 13:20
+ * @author 迷宫的中心
+ * @date 2019/3/28 13:20
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {

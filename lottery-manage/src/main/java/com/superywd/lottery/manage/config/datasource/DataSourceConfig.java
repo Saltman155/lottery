@@ -14,8 +14,8 @@ import java.util.Map;
 
 /**
  * 数据源配置
- * @author: 迷宫的中心
- * @date: 2019/3/26 12:00
+ * @author 迷宫的中心
+ * @date 2019/3/26 12:00
  */
 @Configuration
 public class DataSourceConfig {

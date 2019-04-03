@@ -1701,7 +1701,7 @@
   /*
    * contentloaded.js
    *
-   * Author: Diego Perini (diego.perini at gmail.com)
+   * author Diego Perini (diego.perini at gmail.com)
    * Summary: cross-browser wrapper for DOMContentLoaded
    * Updated: 20101020
    * License: MIT
