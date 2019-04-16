@@ -4,8 +4,8 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter;
-import com.superywd.lottery.main.server.LotteryServer;
-import com.superywd.lottery.main.server.LotteryServerBuilder;
+import com.superywd.library.restserver.Server;
+import com.superywd.library.restserver.ServerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,8 +51,8 @@ public class Main {
     public static void main(String[] args) {
         initLogger();
         loadParameters(args);
-        LotteryServer lotteryServer = LotteryServerBuilder.byPort(port).build();
-        lotteryServer.start();
+        Server server = ServerBuilder.byPort(port).build();
+        server.start();
     }
 
     private static void loadParameters(String[] args){
