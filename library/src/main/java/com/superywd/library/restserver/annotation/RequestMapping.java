@@ -16,5 +16,5 @@ public @interface RequestMapping {
 
     String path() default "/";
 
-    HttpMethod Method() default HttpMethod.DEFAULT;
+    HttpMethod method() default HttpMethod.DEFAULT;
 }

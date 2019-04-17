@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE,ElementType.METHOD})
+@Target({ElementType.PARAMETER})
 public @interface PathVariable {
 
     /**形参名称*/

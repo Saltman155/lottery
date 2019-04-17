@@ -92,11 +92,11 @@ public class ConfigurableProcessor {
         field.setAccessible(true);
         try{
             Property property = field.getAnnotation(Property.class);
-            //如果注解中的默认值属性没有被指定或者注解中的键名在配置中存在，就注入这个属性
-            if(Property.DEFAULT_VALUE.equals(property.defaultValue()) || keyExist(property.key(),properties)){
+            //如果配置文件中存在配置的值，或注释里的defaultValue不是默认的
+            if(keyExist(property.key(),properties) || !Property.DEFAULT_VALUE.equals(property.defaultValue())){
                 field.set(object,getFieldValue(field,properties));
             } else{
-                logger.debug("类 {} 中的属性 {} 因配置不支持而没有被注入...",
+                logger.warn("类 {} 中的属性 {} 没有配置！",
                         field.getDeclaringClass().getName(),field.getName());
             }
         }catch (Exception e){
@@ -121,7 +121,7 @@ public class ConfigurableProcessor {
         // 如果key值是空的，或者value值没有取到，则最后会被当成defaultValue来处理
         if(value == null || "".equals(value.trim())){
             value = defaultValue;
-            logger.debug("类 {} 的带注入成员变量 {} 被注入了默认值",
+            logger.trace("类 {} 的带注入成员变量 {} 被注入了默认值",
                     field.getDeclaringClass().getName(),field.getName());
         }
         PropertyTransformer<?> transformer = PropertyTransformerFactory.newTransformer(

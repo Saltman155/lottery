@@ -54,7 +54,7 @@ public class UriRoutingRegistry {
         }
         RequestMapping classMapping = clazz.getAnnotation(RequestMapping.class);
         String classPath = classMapping.path();
-        HttpMethod classMethod = classMapping.Method();
+        HttpMethod classMethod = classMapping.method();
         Method[] controllerMethods = clazz.getDeclaredMethods();
         for(Method method : controllerMethods){
             //静态的、非公开的、无RequestMapping注释的方法都不予处理
@@ -65,7 +65,7 @@ public class UriRoutingRegistry {
             }
             RequestMapping methodMapping = method.getAnnotation(RequestMapping.class);
             String methodPath = methodMapping.path();
-            HttpMethod methodMethod = methodMapping.Method();
+            HttpMethod methodMethod = methodMapping.method();
             String resultPath = String.format("%s%s",classPath,methodPath);
             HttpMethod resultMethod = methodMethod != HttpMethod.DEFAULT ?
                     methodMethod : classMethod;

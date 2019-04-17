@@ -26,27 +26,23 @@ public final class ServerBuilder {
     private int acThreadCount;
     @Property(key = "server.thread.io.count",defaultValue = "4")
     private int ioTreadCount;
-    @Property(key = "server.thread.handle.max",defaultValue = "")
+    @Property(key = "server.thread.handle.max",defaultValue = "4")
     private int maxHandleThreadCount;
-    @Property(key = "server.thread.handle.min",defaultValue = "")
+    @Property(key = "server.thread.handle.min",defaultValue = "4")
     private int minHandleThreadCount;
-    @Property(key = "server.http.maxPendingRequest",defaultValue = "")
+    @Property(key = "server.http.maxPendingRequest",defaultValue = "10")
     private int maxPendingRequest;
-    @Property(key = "server.http.contextPath",defaultValue = "")
+    @Property(key = "server.http.contextPath",defaultValue = "/server")
     private String contextPath;
-    @Property(key = "server.collection.max",defaultValue = "")
+    @Property(key = "server.collection.max",defaultValue = "100")
     private int maxCollection;
     @Property(key = "server.collection.readIdleTime.max")
     private int maxReadIdleTime;
-    @Property(key = "server.collection.",defaultValue = "")
-    private int MAX_PENDING_REQUEST;
-    @Property(key = "",defaultValue = "")
-    private int MAX_IDLE_TIME;
-    @Property(key = "server.collection.buffer.send.size",defaultValue = "")
-    private int SEND_BUFFER_SIZE;
-    @Property(key = "server.collection.buffer.receive.size",defaultValue = "")
-    private int RECV_BUFFER_SIZE;
-    @Property(key = "",defaultValue = "")
+    @Property(key = "server.collection.buffer.send.size",defaultValue = "100")
+    private int sendBufferSize;
+    @Property(key = "server.collection.buffer.receive.size",defaultValue = "100")
+    private int recvBufferSize;
+    @Property(key = "server.collection.packet.size",defaultValue = "100")
     private int maxPacketLength;
 
     private final int port;
