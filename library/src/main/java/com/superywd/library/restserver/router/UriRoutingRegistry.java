@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.regex.Matcher;
 
 /**
  * 路由注册中心
@@ -75,14 +76,28 @@ public class UriRoutingRegistry {
             UriRoutingController routeController = UriRoutingController.create(uriRoutingPath, clazz, method);
             //绑定路由对象到入口的映射，添加到映射表
             uriRoutingRegistry.put(uriRoutingPath,routeController);
-            logger.debug("添加路由映射 {} ,请求方法为 {}",null,null);
+            logger.debug("添加路由映射 {} ,请求方法为 {}",uriRoutingPath.getRoutingPath(),uriRoutingPath.getHttpMethod());
         }
 
     }
 
     public Router findRouteController(HttpRequest httpRequest){
+        //这里原版的实现了一个LRU的缓存容器做缓存，我这里给它简化一下，直接创建对象得了
         String RequestURI = httpRequest.getRequestURI();
         HttpMethod method = httpRequest.getRequestMethod();
+
+        Matcher matchResult = null;
+        HttpMethod routingMethod = null;
+        Router result = null;
+        for(UriRoutingPath path : uriRoutingRegistry.keySet()){
+            matchResult = path.getRoutingPathPattern().matcher(RequestURI);
+            routingMethod = path.getHttpMethod();
+            if (matchResult.matches() && method == routingMethod) {
+                result = Router.create(uriRoutingRegistry.get(path), matchResult, routingMethod);
+                //TODO： 原版在这里添加拦截器，暂时先不做
+                return result;
+            }
+        }
         return null;
     }
 

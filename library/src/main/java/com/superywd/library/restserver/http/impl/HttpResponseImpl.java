@@ -1,9 +1,13 @@
 package com.superywd.library.restserver.http.impl;
 
 import com.superywd.library.restserver.http.HttpResponse;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 自定义httpResponse实现
@@ -44,6 +48,25 @@ public class HttpResponseImpl implements HttpResponse {
     @Override
     public void sendError(int sc) {
         originalHttpResponse.setStatus(HttpResponseStatus.valueOf(sc));
+    }
+
+    @Override
+    public void write(byte[] content) {
+        originalHttpResponse.content().writeBytes(content);
+    }
+
+    @Override
+    public void writeStringUtf8(String str) {
+        ByteBufUtil.writeUtf8(originalHttpResponse.content(), str);
+    }
+
+    @Override
+    public void write(InputStream in) {
+        try {
+            originalHttpResponse.content().writeBytes(in, in.available());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
 

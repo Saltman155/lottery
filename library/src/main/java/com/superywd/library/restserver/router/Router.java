@@ -16,7 +16,7 @@ import java.util.regex.Matcher;
  * @date 2019/4/16 14:57
  */
 public class Router {
-    /**请求路径*/
+    /**解析出的参数值数组*/
     private final String[] pathVariables;
     /**请求方法*/
     private final HttpMethod httpMethod;

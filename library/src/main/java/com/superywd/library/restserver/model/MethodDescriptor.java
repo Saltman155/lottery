@@ -1,8 +1,11 @@
 package com.superywd.library.restserver.model;
 
+import com.superywd.library.restserver.http.HttpRequest;
+import com.superywd.library.restserver.http.HttpResponse;
+import com.superywd.library.utils.ClassUtil;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 
 /**
  * 调用方法及上下文信息包装类
@@ -23,10 +26,6 @@ public class MethodDescriptor {
     private Class<?> returnType;
     /**方法参数封装类*/
     private MethodParameter[] methodParameters;
-    /**消耗*/
-    private String consume;
-    /**生产*/
-    private String produce;
 
     private MethodDescriptor(Class clazz, Method method) {
         this(clazz, method, new DefaultParameterNameResolver());
@@ -47,44 +46,35 @@ public class MethodDescriptor {
         //获取形参上的注释
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
 
-        this.invokeTarget = Dorado.beanContainer.getBean(clazz);
+        try {
+            this.invokeTarget = ClassUtil.buildInstance(clazz,null,null);
+        } catch (NoSuchMethodException e) {
+            //先这么干吧
+            throw new Error("不支持控制器含有带参数的构造器！");
+        }
         this.annotations = method.getAnnotations();
-        Consume consumeAnnotation = method.getAnnotation(Consume.class);
-        Produce produceAnnotation = method.getAnnotation(Produce.class);
-
         methodParameters = new MethodParameter[method.getParameterCount()];
         for (int i = 0; i < method.getParameterCount(); i++) {
             Annotation annotation = parameterAnnotations[i].length == 0 ? null : parameterAnnotations[i][0];
             Class<?> type = parameterTypes[i];
             String name = parameterNames[i];
-            Type genericParameterType = genericParameterTypes[i];
-
-            MethodParameter methodParameter = MethodParameter.create(name, type, genericParameterType, annotation);
-            if (methodParameter.annotationType == MultipartFile.class) {
-            }
+            MethodParameter methodParameter = new MethodParameter(name,type,annotation);
             methodParameters[i] = methodParameter;
-            methodParameters[i].setMethodParameterCount(method.getParameterCount());
-            registerMessageDescriptorForTypeIfNeed(type);
         }
-
-        this.consume = consumeAnnotation == null ? guessConsume() : consumeAnnotation.value();
-        this.produce = produceAnnotation == null ? guessProduce() : produceAnnotation.value();
     }
 
     public static MethodDescriptor create(Class<?> clazz, Method method) {
         return new MethodDescriptor(clazz, method);
     }
 
-    private void registerMessageDescriptorForTypeIfNeed(Class<?> type) {
-        try {
-            if (Message.class.isAssignableFrom(type)) {
-                registerMessageDescriptorForType(type);
-            }
-        } catch (Throwable ex) {
-            // ignore this ex
-        }
+
+    public Class getClazz() {
+        return clazz;
     }
 
+    public Annotation[] getAnnotations() {
+        return annotations;
+    }
 
     public Method getMethod() {
         return method;
@@ -104,7 +94,34 @@ public class MethodDescriptor {
 
     /** 方法参数信息封装类*/
     public static class MethodParameter {
+        /**形参名称*/
+        private String name;
+        /**形参类型*/
+        private Class<?> type;
+        /**形参注解*/
+        private Annotation annotation;
+        /**注解类型*/
+        private Class<?> annotationType;
 
+        private MethodParameter(String name, Class<?> type, Annotation annotation) {
+            this.name = name;
+            this.type = type;
+            this.annotation =annotation;
+            this.annotationType = annotation == null ? null : annotation.getClass();
+
+            if(type == HttpRequest.class){
+                this.annotationType = HttpRequest.class;
+            }
+            if (type == HttpResponse.class) {
+                this.annotationType = HttpResponse.class;
+            }
+        }
+
+        public String getName() { return name; }
+        public Class<?> getType() { return type; }
+        public Annotation getAnnotation() { return annotation; }
+        public Class<?> getAnnotationType() { return annotationType; }
     }
+
 }
 

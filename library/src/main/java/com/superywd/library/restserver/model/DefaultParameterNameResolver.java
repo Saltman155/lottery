@@ -1,6 +1,7 @@
 package com.superywd.library.restserver.model;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 /**
  * 默认的根据方法参数注解获得方法参数名
@@ -9,12 +10,17 @@ import java.lang.reflect.Method;
  */
 public class DefaultParameterNameResolver implements ParameterNameResolver {
 
-    private ParameterNameResolver parameterNameResolver = new LocalVariableTableParameterNameResolver();
-
     @Override
     public String[] getParameterNames(Method method) {
-        if (method.getParameterCount() == 0) {
-            return new String[]{};
+        Parameter[] methodParameters = method.getParameters();
+        String[] parameterNames = new String[methodParameters.length];
+
+        for (int i = 0; i < parameterNames.length; i++) {
+            parameterNames[i] = methodParameters[i].getName();
         }
+
+        return parameterNames;
     }
+
+
 }
