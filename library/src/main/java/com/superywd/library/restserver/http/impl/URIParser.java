@@ -49,10 +49,4 @@ public class URIParser {
         return requestUri;
     }
 
-    public static void main(String[] args) {
-        URIParser parser = new URIParser("api");
-        parser.parse("/api/123/b3/?ab=123&er=145");
-        System.out.println(parser.getQueryString());
-        System.out.println(parser.getRequestUri());
-    }
 }

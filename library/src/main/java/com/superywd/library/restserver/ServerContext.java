@@ -1,6 +1,9 @@
 package com.superywd.library.restserver;
 
+import com.superywd.library.restserver.annotation.FilterPath;
+import com.superywd.library.restserver.http.Filter;
 import com.superywd.library.restserver.router.UriRoutingRegistry;
+import com.superywd.library.utils.ArrayUtil;
 import com.superywd.library.utils.PackageScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +22,7 @@ public class ServerContext {
     private static final Logger logger = LoggerFactory.getLogger(ServerContext.class);
 
     private final String contextPath;
-    /**扫描包*/
+    /**被扫描的包*/
     private final String[] packages;
     /**路由注册中心*/
     private final UriRoutingRegistry registry;
@@ -70,7 +73,21 @@ public class ServerContext {
      * @param clazz         待处理的类
      */
     private void registerWebComponent(Class<?> clazz){
-
+        //注册拦截器
+        if (Filter.class.isAssignableFrom(clazz)) {
+            FilterPath filterPath = clazz.getAnnotation(FilterPath.class);
+            if (filterPath == null) {
+                return;
+            }
+            String[] include = filterPath.include();
+            String[] exclude = filterPath.exclude();
+            if(ArrayUtil.isEmpty(include) && ArrayUtil.isEmpty(exclude)){
+                return;
+            }
+            //TODO：待开发
+        }
+        //注册控制器
+        initializeUriRouting(clazz);
     }
 
     /**
@@ -104,4 +121,5 @@ public class ServerContext {
     public ServerHandlerExecutor getExecutor() {
         return executor;
     }
+
 }

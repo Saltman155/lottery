@@ -1,5 +1,6 @@
 package com.superywd.library.restserver.http;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +18,8 @@ public interface HttpRequest {
     String getParameter(String name);
     /**获取请求参数列表*/
     String[] getParameters(String name);
+    /**获取所有的请求参数*/
+    Map<String, List<String>> getAllParameters();
     /**获取请求端ip*/
     String getRemoteAddr();
     /**获取请求头*/

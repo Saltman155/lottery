@@ -23,10 +23,6 @@ public class Main {
 
     private static int port = 10086;
 
-    static{
-
-    }
-
     /**日志配置初始化*/
     private static void initLogger(){
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();

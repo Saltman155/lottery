@@ -39,7 +39,7 @@ public class HttpRequestImpl implements HttpRequest {
         this.uriParser = new URIParser(contextPath);
         /**请求参数解码器*/
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.uri());
-        this.uriParser.parse(queryStringDecoder.path());
+        this.uriParser.parse(queryStringDecoder.uri());
         parameters.putAll(queryStringDecoder.parameters());
         method = HttpMethod.getInstance(request.method().name());
         //关于这块的解析，如果是post请求，参数的解析方式是不同的，但目前暂时只支持get请求
@@ -66,6 +66,12 @@ public class HttpRequestImpl implements HttpRequest {
     public String[] getParameters(String name) {
         return this.parameters.get(name).toArray(new String[] {});
     }
+
+    @Override
+    public Map<String, List<String>> getAllParameters() {
+        return this.parameters;
+    }
+
 
     @Override
     public String getRemoteAddr() {

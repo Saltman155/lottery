@@ -5,6 +5,8 @@ import com.superywd.library.restserver.annotation.RequestMapping;
 import com.superywd.library.restserver.annotation.RequestParam;
 import com.superywd.library.restserver.annotation.RestController;
 import com.superywd.library.restserver.http.HttpMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 测试接口控制器
@@ -15,6 +17,8 @@ import com.superywd.library.restserver.http.HttpMethod;
 @RestController
 public class TestController {
 
+    public static final Logger logger = LoggerFactory.getLogger(LotteryController.class);
+
     @RequestMapping(path = "/test1",method = HttpMethod.GET)
     public Object test(@RequestParam(name = "param",required = false)String param1){
         return null;
@@ -24,7 +28,9 @@ public class TestController {
     public Object test(
             @PathVariable(name = "param1")String param1,
             @RequestParam(name = "param2",required = false)String param2){
-        return null;
+        logger.info("param1 = {}",param1);
+        logger.info("param2 = {}",param2);
+        return "hello world";
     }
 
 

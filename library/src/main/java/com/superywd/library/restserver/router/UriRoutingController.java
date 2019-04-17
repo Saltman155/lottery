@@ -6,12 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.superywd.library.restserver.http.HttpRequest;
 import com.superywd.library.restserver.http.HttpResponse;
 import com.superywd.library.restserver.model.MethodDescriptor;
+import com.superywd.library.restserver.model.MethodParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
-
-import static com.superywd.library.restserver.model.MethodDescriptor.MethodParameter;
 
 /**
  * 控制器方法入口对象（代理对象）
@@ -81,7 +80,15 @@ public class UriRoutingController {
         response.write("error".getBytes());
     }
 
+    /**
+     * 参数解析
+     * @param request       请求对象
+     * @param response      响应对象
+     * @param pathVariables uri匹配值
+     * @return              返回值
+     */
     private Object[] resolveParameters(HttpRequest request, HttpResponse response, String[] pathVariables) {
+        //获取控制器参数列表
         MethodParameter[] methodParameters = methodDescriptor.getMethodParameters();
         if (methodParameters.length == 0) {
             return null;
@@ -90,8 +97,12 @@ public class UriRoutingController {
         for (int i = 0; i < methodArgs.length; i++) {
             //获取参数在路由里的原始位置
             int pathVariableIndex = uriRoutingPath.resolvePathIndex(methodParameters[i].getName());
-//            methodArgs[i] = resolveMethodArg(request, response, methodDescriptor, methodParameters[i],
-//                    pathVariableIndex == -1 ? null : pathVariables[pathVariableIndex]);
+            //填入路由参数
+            if(pathVariableIndex != -1){
+                methodArgs[i] = methodParameters[i].getTransformer().stringValueTransform(pathVariables[pathVariableIndex]);
+                continue;
+            }
+            methodArgs[i] = methodParameters[i].getTransformer().requestValueTransform(request.getAllParameters());
         }
         return methodArgs;
     }

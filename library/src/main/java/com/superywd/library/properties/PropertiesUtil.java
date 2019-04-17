@@ -66,7 +66,7 @@ public class PropertiesUtil {
      */
     public static List<Properties> loadAllFromDirectory(File dir) throws IOException{
         List<Properties> result = new ArrayList<>();
-        return loadAllFromDirectory(dir, false,result);
+        return loadAllFromDirectory(dir, true,result);
     }
 
     /**

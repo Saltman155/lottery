@@ -12,7 +12,10 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    <logger
+
+    <!--关闭netty日志-->
+    <logger name="io.netty" level="INFO"/>
+
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>
     </root>
