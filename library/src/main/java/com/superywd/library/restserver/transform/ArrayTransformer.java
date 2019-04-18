@@ -7,6 +7,4 @@ package com.superywd.library.restserver.transform;
  */
 public class ArrayTransformer {
 
-
-
 }

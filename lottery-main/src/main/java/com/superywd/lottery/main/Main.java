@@ -6,6 +6,7 @@ import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter;
 import com.superywd.library.restserver.Server;
 import com.superywd.library.restserver.ServerBuilder;
+import com.superywd.lottery.main.scripts.ScriptService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,8 +48,13 @@ public class Main {
     public static void main(String[] args) {
         initLogger();
         loadParameters(args);
+        //脚本引擎启动
+        ScriptService.start();
         Server server = ServerBuilder.byPort(port).build();
+        //网络服务启动
         server.start();
+
+
     }
 
     private static void loadParameters(String[] args){

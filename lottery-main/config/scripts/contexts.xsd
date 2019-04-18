@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="scriptInfo" type="scriptInfo"/>
+    <xs:element name="scriptList" type="scriptList"/>
+    <xs:complexType name="scriptList">
+        <xs:sequence>
+            <xs:element ref="scriptInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="scriptInfo">
+        <xs:sequence>
+            <xs:element name="childScriptInfos" type="scriptInfo" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="library" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="compiler" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="root" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>

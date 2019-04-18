@@ -8,6 +8,9 @@ import com.superywd.library.restserver.http.HttpMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 测试接口控制器
  * @author 迷宫的中心
@@ -30,7 +33,10 @@ public class TestController {
             @RequestParam(name = "param2",required = false)String param2){
         logger.info("param1 = {}",param1);
         logger.info("param2 = {}",param2);
-        return "hello world";
+        Map<String,Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("message","success");
+        return result;
     }
 
 

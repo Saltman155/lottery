@@ -1,0 +1,27 @@
+package com.superywd.library.script;
+
+import java.io.File;
+
+/**
+ * 脚本上下文实例工厂
+ * @author 迷宫的中心
+ * @date 2019/4/18 15:14
+ */
+public class ScriptContextFactory {
+
+    /**
+     * 创建一个脚本上下文实例
+     * @param file      需要读取脚本文件的根目录
+     * @param parent    父类脚本上下文
+     * @return          上下文实例
+     */
+    public static ScriptContext getScriptContext(File file,ScriptContext parent){
+        ScriptContext context = null;
+        if(parent == null){
+            context = new ScriptContentImpl(file);
+        }else{
+            context = new ScriptContentImpl(file,parent);
+        }
+        return context;
+    }
+}
