@@ -61,7 +61,21 @@ public class ScriptContentImpl implements ScriptContext {
         ScriptCompiler scriptCompiler = instantiateCompiler();
         //获取到根路径下所有的文件
         Collection<File> files = FileUtils.listFiles(root, scriptCompiler.getSupportedFileTypes(), true);
+        //设置父级类加载器
+        if (parentScriptContext != null) {
+            scriptCompiler.setParentClassLoader(parentScriptContext.getCompilationResult().getClassLoader());
+        }
+        scriptCompiler.setLibraries(libraries);
+        //编译
+        compilationResult = scriptCompiler.compile(files);
 
+//        getClassListener().postLoad(compilationResult.getCompiledClasses());
+        //处理子类脚本上下文的初始化
+        if (childScriptContexts != null) {
+            for (ScriptContext context : childScriptContexts) {
+                context.init();
+            }
+        }
     }
 
     @Override

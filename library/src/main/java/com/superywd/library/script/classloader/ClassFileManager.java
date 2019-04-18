@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager> {
 
-    /**这个map存储相关的classloader对脚本编译的结果（二进制文件）*/
+    /**这个map存储相关的classloader对脚本编译的结果*/
     private final Map<String, BinaryClass> compiledClasses = new HashMap<>();
     /**相关的ScriptClassLoader*/
     protected ScriptClassLoaderImpl classLoader;
@@ -54,8 +54,7 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
         if(classLoader == null){
             if (parentClassLoader != null) {
                 classLoader = new ScriptClassLoaderImpl(this, parentClassLoader);
-            }
-            else {
+            } else {
                 classLoader = new ScriptClassLoaderImpl(this);
             }
         }

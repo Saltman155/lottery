@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 脚本编译器的Javac实现
+ * Javac实现的脚本编译器
  * @author 迷宫的中心
  * @date 2019/4/18 13:49
  */
@@ -31,13 +31,12 @@ public class JavacScriptCompiler implements ScriptCompiler {
 
     private static final Logger logger = LoggerFactory.getLogger(JavacScriptCompiler.class);
 
-    /**jdk暴露的编译接口*/
+    /**jdk提供的编译接口*/
     protected final JavaCompiler javaCompiler;
     /**编译的依赖库*/
     protected Iterable<File> libraries;
     /**此编译器关联的classLoader*/
     protected ScriptClassLoader parentClassLoader;
-
 
     public JavacScriptCompiler() {
         this.javaCompiler = JavacTool.create();

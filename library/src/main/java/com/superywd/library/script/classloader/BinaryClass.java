@@ -48,6 +48,7 @@ public class BinaryClass extends BaseFileObject {
 
     @Override
     public URI toUri() {
+        //不支持
         throw new UnsupportedOperationException();
     }
 
@@ -68,11 +69,13 @@ public class BinaryClass extends BaseFileObject {
 
     @Override
     public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
+        //不支持
         throw new UnsupportedOperationException();
     }
 
     @Override
     public Writer openWriter() {
+        //不支持
         throw new UnsupportedOperationException();
     }
 
