@@ -1,4 +1,4 @@
-package com.superywd.library.script.compiler.model;
+package com.superywd.library.script.compiler.source;
 
 import io.netty.util.CharsetUtil;
 import org.apache.commons.io.FileUtils;

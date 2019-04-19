@@ -8,7 +8,7 @@ server:
         max-age: 604800
 #mybatis配置
 mybatis:
-  type-aliases-package: com.superywd.lottery.manage.model
+  type-aliases-package: com.superywd.lottery.manage.source
   mapper-locations: classpath:mapping/*.xml
 #spring框架配置
 spring:

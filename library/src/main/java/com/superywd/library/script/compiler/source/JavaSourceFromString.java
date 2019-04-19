@@ -1,4 +1,4 @@
-package com.superywd.library.script.compiler.model;
+package com.superywd.library.script.compiler.source;
 
 import javax.tools.JavaFileObject;
 import javax.tools.SimpleJavaFileObject;

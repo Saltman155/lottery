@@ -5225,7 +5225,7 @@ module.exports = function(Chart) {
 		}
 	};
 	helpers.inherits = function(extensions) {
-		// Basic javascript inheritance based on the model created in Backbone.js
+		// Basic javascript inheritance based on the source created in Backbone.js
 		var me = this;
 		var ChartElement = (extensions && extensions.hasOwnProperty('constructor')) ? extensions.constructor : function() {
 			return me.apply(this, arguments);
@@ -5733,7 +5733,7 @@ module.exports = function(Chart) {
 		var height = boundingRect.bottom - boundingRect.top - paddingTop - paddingBottom;
 
 		// We divide by the current device pixel ratio, because the canvas is scaled up by that amount in each direction. However
-		// the backend model is in unscaled coordinates. Since we are going to deal with our model coordinates, we go back here
+		// the backend source is in unscaled coordinates. Since we are going to deal with our source coordinates, we go back here
 		mouseX = Math.round((mouseX - boundingRect.left - paddingLeft) / (width) * canvas.width / chart.currentDevicePixelRatio);
 		mouseY = Math.round((mouseY - boundingRect.top - paddingTop) / (height) * canvas.height / chart.currentDevicePixelRatio);
 
@@ -8723,7 +8723,7 @@ module.exports = function(Chart) {
 		return base;
 	}
 
-	// Private helper to create a tooltip item model
+	// Private helper to create a tooltip item source
 	// @param element : the chart element (point, arc, bar) to create the tooltip item for
 	// @return : new tooltip item
 	function createTooltipItem(element) {
@@ -8743,7 +8743,7 @@ module.exports = function(Chart) {
 	}
 
 	/**
-	 * Helper to get the reset model for the tooltip
+	 * Helper to get the reset source for the tooltip
 	 * @param tooltipOpts {Object} the tooltip options
 	 */
 	function getBaseModel(tooltipOpts) {
@@ -9062,8 +9062,8 @@ module.exports = function(Chart) {
 			var me = this;
 			var opts = me._options;
 
-			// Need to regenerate the model because its faster than using extend and it is necessary due to the optimization in Chart.Element.transition
-			// that does _view = _model if ease === 1. This causes the 2nd tooltip update to set properties in both the view and model at the same time
+			// Need to regenerate the source because its faster than using extend and it is necessary due to the optimization in Chart.Element.transition
+			// that does _view = _model if ease === 1. This causes the 2nd tooltip update to set properties in both the view and source at the same time
 			// which breaks any animations.
 			var existingModel = me._model;
 			var model = me._model = getBaseModel(opts);
