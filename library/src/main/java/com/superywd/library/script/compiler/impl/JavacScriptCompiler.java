@@ -62,7 +62,7 @@ public class JavacScriptCompiler implements ScriptCompiler {
         if (className.length != sourceCode.length) {
             throw new IllegalArgumentException("错误的参数，类名称数组与源码数组长度不一致！");
         }
-        List<JavaFileObject> compilationUnits = new ArrayList<JavaFileObject>();
+        List<JavaFileObject> compilationUnits = new ArrayList<>();
         for (int i = 0; i < className.length; i++) {
             //将类名与关联的源码包装成JavaFileObject类型
             JavaFileObject compilationUnit = new JavaSourceFromString(className[i], sourceCode[i]);
