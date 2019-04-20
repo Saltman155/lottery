@@ -85,17 +85,17 @@ public class ScriptContentImpl implements ScriptContext {
 
     @Override
     public void setLibraries(Iterable<File> files) {
-
+        this.libraries = files;
     }
 
     @Override
     public void setCompilerClassName(String className) {
-
+        this.compilerClassName = className;
     }
 
     @Override
     public void setClassListener(ClassListener listener) {
-
+        this.classListener = listener;
     }
 
     @Override

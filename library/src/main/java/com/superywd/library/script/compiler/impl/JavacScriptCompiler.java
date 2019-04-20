@@ -107,7 +107,8 @@ public class JavacScriptCompiler implements ScriptCompiler {
                 logger.error(e.getMessage(),e);
             }
         }
-        JavaCompiler.CompilationTask task = javaCompiler.getTask(null, manager, diagnostics, options, null, compilationUnits);
+        JavaCompiler.CompilationTask task = javaCompiler
+                .getTask(null, manager, diagnostics, options, null, compilationUnits);
         if (!task.call()) {
             //编译失败处理（打印错误日志）
             for (Diagnostic diagnostic : diagnostics.getDiagnostics()) {
