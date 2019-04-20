@@ -60,7 +60,6 @@ public class ScriptInfo {
         this.compilerClass = compilerClass;
     }
 
-
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof ScriptInfo)){
