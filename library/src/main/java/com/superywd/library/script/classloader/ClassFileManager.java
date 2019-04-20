@@ -1,6 +1,8 @@
 package com.superywd.library.script.classloader;
 
 import com.superywd.library.script.classloader.impl.ScriptClassLoaderImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.tools.*;
 import java.io.File;
@@ -9,14 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *此类扩展管理加载的类，它还负责欺骗编译器。不幸的是编译器没有
- *使用类加载器，因此我们必须为每个编译手动传递类数据。
+ *这个类用于改写编译的细节。将提供给javac的编译结果容器改成我们自己定义的容器
  * @author 迷宫的中心
  * @date 2019/4/18 17:32
  */
 public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager> {
 
-    /**这个map存储相关的classloader对脚本编译的结果*/
+    private static final Logger logger = LoggerFactory.getLogger(ClassFileManager.class);
+
+    /**这个map（缓存表）存储相关的classloader对脚本编译的结果*/
     private final Map<String, BinaryClass> compiledClasses = new HashMap<>();
     /**相关的ScriptClassLoader*/
     protected ScriptClassLoaderImpl classLoader;
@@ -28,13 +31,13 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
     }
 
     /**
-     * 该方法会在脚本编译时调用。
-     * 我们将其重写为创建一个自定义的BinaryClass，然后放入缓存中
+     * 该方法会被javac内部的编译逻辑调用，通过调用此方法来生成一个用于存放编译结果字节码的对象
+     * 我们将其做一些侵入性的重写，创建一个自定义的BinaryClass，然后放入缓存中，然后返回
      * @param location      未使用
      * @param className     类名
      * @param kind          未使用
      * @param sibling       未使用
-     * @return              自定义的字节码类关联对象
+     * @return              自定义的字节码类关联对象（继承自 {@link com.sun.tools.javac.file.BaseFileObject}）
      */
     @Override
     public JavaFileObject getJavaFileForOutput(Location location, String className, JavaFileObject.Kind kind, FileObject sibling) {
@@ -50,7 +53,7 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
      * @return              对应的类加载器
      */
     @Override
-    public ScriptClassLoaderImpl getClassLoader(Location location) {
+    public ClassLoader getClassLoader(Location location) {
         if(classLoader == null){
             if (parentClassLoader != null) {
                 classLoader = new ScriptClassLoaderImpl(this, parentClassLoader);
@@ -67,7 +70,7 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
      * @throws IOException
      */
     public void addLibrary(File file) throws IOException {
-        ScriptClassLoaderImpl classLoader = getClassLoader(null);
+        ScriptClassLoaderImpl classLoader = (ScriptClassLoaderImpl) getClassLoader(null);
         classLoader.addJarFile(file);
     }
 
@@ -83,8 +86,8 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
     }
 
     /**
-     * 获取已经类文文件管理器中维护的类（已经编译的）
-     * @return
+     * 获取类文件管理器缓存中维护的类（已经编译的）
+     * @return                      已经编译的类表
      */
     public Map<String, BinaryClass> getCompiledClasses() {
         return compiledClasses;

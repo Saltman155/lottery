@@ -41,15 +41,16 @@ public abstract class ScriptClassLoader extends URLClassLoader {
 
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
-        //先判断此类加载器中是否有编译的结果（字节码），是则从此类加载器缓存中获取，否则从父类加载器中获取
+        //先判断关联的文件管理器的缓存中是否有编译的结果（字节码），是则表明此类是此类加载器编译加载的，否则从父级加载器中查找
         boolean isCompiled = getCompiledClasses().contains(name);
         if(!isCompiled) {
             return super.loadClass(name,true);
         }
         //尝试从缓存中获取Class对象
         Class<?> clazz = getDefinedClass(name);
-        //如果缓存中获取不到，说明字节码尚未被转换为Class对象
-        //则调用父加载器的分析方法构建出Class对象，再放入缓存
+        //如果缓存中获取不到Class对象，说明编译的结果 BinaryClass 中尚未关联Class对象
+        //则调用父加载器的构建方法构建出Class对象，再放入缓存
+        //TODO： 这里的延迟定义Class其实挺蠢的，可以在编译的时候直接做掉
         if (clazz == null) {
             byte[] b = getByteCode(name);
             clazz = super.defineClass(name, b, 0, b.length);
@@ -59,7 +60,18 @@ public abstract class ScriptClassLoader extends URLClassLoader {
     }
 
     /**
-     * @param file
+     * 获取依赖
+     * @param name      依赖名
+     * @return          依赖地址
+     */
+    @Override
+    public URL getResource(String name) {
+        return super.getResource(name);
+    }
+
+    /**
+     * 添加jar文件到该类加载器的依赖中
+     * @param file              新的jar文件
      * @throws IOException
      */
     public void addJarFile(File file) throws IOException {
@@ -94,7 +106,7 @@ public abstract class ScriptClassLoader extends URLClassLoader {
     public abstract byte[] getByteCode(String className);
 
     /**
-     * 从缓存中根据类名获取对应的Class对象
+     * 从关联的类文件管理器的缓存中根据类名获取对应的Class对象
      * @param name          类名
      * @return              Class对象
      */

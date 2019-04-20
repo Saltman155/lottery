@@ -6,7 +6,8 @@ import java.io.*;
 import java.net.URI;
 
 /**
- * 这个类简单的维护了类名，类对象与字节码的关联关系
+ * 这个类实现了BaseFileObject,用于存储编译结果，脚本编译后的字节码会存储在这个类中，并维护一份引用在ClassFileManager的缓存表中
+ * 当它通过缓存表被查询时，它对应的Class对象会被设置。
  * @author 迷宫的中心
  * @date 2019/4/18 17:36
  */
@@ -102,11 +103,28 @@ public class BinaryClass extends BaseFileObject {
         return name.hashCode();
     }
 
+    /**
+     * 获取这个编译结果类对应的Class对象
+     * @return              对应的Class对象
+     */
     public Class<?> getDefinedClass() {
         return definedClass;
     }
 
+    /**
+     * 设置这个编译结果类对应的Class对象
+     * @param definedClass  对饮的Class对象
+     */
     public void setDefinedClass(Class<?> definedClass) {
         this.definedClass = definedClass;
     }
+
+    /**
+     * 获取编译结果的字节码
+     * @return              编译结果（字节码）
+     */
+    public byte[] getBytes() {
+        return byteData.toByteArray();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.superywd.library.script.classloader.impl;
 
+import com.superywd.library.script.classloader.BinaryClass;
 import com.superywd.library.script.classloader.ClassFileManager;
 import com.superywd.library.script.classloader.ScriptClassLoader;
 import org.slf4j.Logger;
@@ -38,12 +39,20 @@ public class ScriptClassLoaderImpl extends ScriptClassLoader {
 
     @Override
     public byte[] getByteCode(String className) {
-        return new byte[0];
+        BinaryClass bc = getClassFileManager().getCompiledClasses().get(className);
+        byte[] b = new byte[bc.getBytes().length];
+        //做一个复制，以便修改时不会影响
+        System.arraycopy(bc.getBytes(), 0, b, 0, b.length);
+        return b;
     }
 
     @Override
     public Class<?> getDefinedClass(String name) {
-        return null;
+        BinaryClass bc = classFileManager.getCompiledClasses().get(name);
+        if (bc == null) {
+            return null;
+        }
+        return bc.getDefinedClass();
     }
 
     @Override

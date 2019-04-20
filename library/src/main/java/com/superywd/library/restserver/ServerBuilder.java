@@ -36,7 +36,7 @@ public final class ServerBuilder {
     private String contextPath;
     @Property(key = "server.collection.max",defaultValue = "100")
     private int maxCollection;
-    @Property(key = "server.collection.readIdleTime.max")
+    @Property(key = "server.collection.readIdleTime.max",defaultValue = "10")
     private int maxReadIdleTime;
     @Property(key = "server.collection.buffer.send.size",defaultValue = "100")
     private int sendBufferSize;

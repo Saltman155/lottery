@@ -13,7 +13,7 @@ import java.io.File;
 public interface ScriptContext {
 
     /**
-     * 初始化脚本上下文，执行编译
+     * 初始化脚本上下文，执行编译，以及编译后的切面方法
      */
     void init();
 

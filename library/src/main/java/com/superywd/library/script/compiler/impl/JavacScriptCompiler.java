@@ -124,7 +124,7 @@ public class JavacScriptCompiler implements ScriptCompiler {
             }
             throw new RuntimeException("编译脚本文件失败！");
         }
-        ScriptClassLoader classLoader = manager.getClassLoader(null);
+        ScriptClassLoader classLoader = (ScriptClassLoader) manager.getClassLoader(null);
         Class<?>[] compiledClasses = classNamesToClasses(manager.getCompiledClasses().keySet(), classLoader);
         return new CompilationResult(compiledClasses, classLoader);
     }
