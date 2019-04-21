@@ -1,6 +1,8 @@
 package com.superywd.library.script;
 
+import com.superywd.library.script.classlistener.AggregatedClassListener;
 import com.superywd.library.script.classlistener.ClassListener;
+import com.superywd.library.script.classlistener.OnClassLoadUnloadListener;
 import com.superywd.library.script.compiler.CompilationResult;
 import com.superywd.library.script.compiler.ScriptCompiler;
 import org.apache.commons.io.FileUtils;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -16,9 +19,9 @@ import java.util.Set;
  * @author 迷宫的中心
  * @date 2019/4/18 15:16
  */
-public class ScriptContentImpl implements ScriptContext {
+public class ScriptContextImpl implements ScriptContext {
 
-    private static final Logger logger = LoggerFactory.getLogger(ScriptContentImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ScriptContextImpl.class);
 
     /**父类型脚本上下文对象*/
     private final ScriptContext parentScriptContext;
@@ -35,11 +38,18 @@ public class ScriptContentImpl implements ScriptContext {
     /**编译器名称*/
     private String compilerClassName;
 
-    public ScriptContentImpl(File root){
+    {
+        //默认注册加载卸载注解检查监听器
+        AggregatedClassListener listener = new AggregatedClassListener();
+        listener.addClassListener(new OnClassLoadUnloadListener());
+        this.classListener = listener;
+    }
+
+    public ScriptContextImpl(File root){
         this(root, null);
     }
 
-    public ScriptContentImpl(File root,ScriptContext parent){
+    public ScriptContextImpl(File root, ScriptContext parent){
         if(root == null){
             throw new NullPointerException("根路径不存在...");
         }
@@ -49,7 +59,6 @@ public class ScriptContentImpl implements ScriptContext {
         this.root = root;
         this.parentScriptContext = parent;
     }
-
 
 
     @Override
@@ -68,8 +77,8 @@ public class ScriptContentImpl implements ScriptContext {
         scriptCompiler.setLibraries(libraries);
         //编译
         compilationResult = scriptCompiler.compile(files);
-
-//        getClassListener().postLoad(compilationResult.getCompiledClasses());
+        //调用切面方法
+        getClassListener().postLoad(compilationResult.getCompiledClasses());
         //处理子类脚本上下文的初始化
         if (childScriptContexts != null) {
             for (ScriptContext context : childScriptContexts) {
@@ -80,12 +89,41 @@ public class ScriptContentImpl implements ScriptContext {
 
     @Override
     public void shutdown() {
+        synchronized (this) {
+            if (compilationResult == null) {
+                logger.error("关闭异常！脚本上下文没有有效的编译结果！");
+                return;
+            }
+            //先关子级脚本的
+            if (childScriptContexts != null) {
+                for (ScriptContext child : childScriptContexts) {
+                    child.shutdown();
+                }
+            }
+            getClassListener().preUnload(compilationResult.getCompiledClasses());
+            compilationResult = null;
+        }
+    }
 
+    @Override
+    public void reload() {
+        shutdown();
+        init();
+    }
+
+    @Override
+    public File getRoot() {
+        return root;
     }
 
     @Override
     public void setLibraries(Iterable<File> files) {
         this.libraries = files;
+    }
+
+    @Override
+    public Iterable<File> getLibraries() {
+        return libraries;
     }
 
     @Override
@@ -99,8 +137,42 @@ public class ScriptContentImpl implements ScriptContext {
     }
 
     @Override
+    public ClassListener getClassListener() {
+        return classListener;
+    }
+
+    @Override
     public CompilationResult getCompilationResult() {
         return compilationResult;
+    }
+
+    @Override
+    public Collection<ScriptContext> getChildScriptContexts() {
+        return childScriptContexts;
+    }
+
+    @Override
+    public void addChildScriptContext(ScriptContext context) {
+        synchronized (this) {
+            if (childScriptContexts == null) {
+                childScriptContexts = new HashSet<>();
+            }
+            if (childScriptContexts.contains(context)) {
+                logger.error("子级脚本对象被重复加载！子级脚本对象加载文件的根路径为" + context.getRoot().getAbsolutePath());
+                return;
+            }
+            if (isInitialized()) {
+                context.init();
+            }
+        }
+        childScriptContexts.add(context);
+    }
+
+    @Override
+    public boolean isInitialized() {
+        synchronized (this) {
+            return compilationResult != null;
+        }
     }
 
     /**
@@ -123,12 +195,41 @@ public class ScriptContentImpl implements ScriptContext {
         return compiler;
     }
 
-
     public ScriptContext getParentScriptContext() {
         return parentScriptContext;
     }
 
     public String getCompilerClassName() {
         return compilerClassName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ScriptContextImpl)){
+            return false;
+        }
+        ScriptContextImpl another = (ScriptContextImpl) obj;
+        //当存在父类上下文时，还需要再比较父类上下文是否也是一致的
+        if (parentScriptContext == null) {
+            return another.getRoot().equals(root);
+        }
+        return another.getRoot().equals(root) && parentScriptContext.equals(another.parentScriptContext);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = parentScriptContext != null ? parentScriptContext.hashCode() : 0;
+        result = 31 * result + root.hashCode();
+        return result;
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        if (compilationResult != null) {
+            logger.error("回收也要按基本法呀！你这都没执行销毁方法你就回收了？？？还好我有finalize方法做补充...");
+            shutdown();
+            logger.error("好了，程序逻辑有问题！得改改！");
+        }
+        super.finalize();
     }
 }

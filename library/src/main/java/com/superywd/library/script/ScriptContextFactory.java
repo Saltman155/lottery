@@ -16,11 +16,12 @@ public class ScriptContextFactory {
      * @return          上下文实例
      */
     public static ScriptContext getScriptContext(File file,ScriptContext parent){
-        ScriptContext context = null;
+        ScriptContext context;
         if(parent == null){
-            context = new ScriptContentImpl(file);
+            context = new ScriptContextImpl(file);
         }else{
-            context = new ScriptContentImpl(file,parent);
+            context = new ScriptContextImpl(file,parent);
+            parent.addChildScriptContext(context);
         }
         return context;
     }
