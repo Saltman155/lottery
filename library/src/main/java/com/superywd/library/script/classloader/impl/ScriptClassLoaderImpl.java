@@ -1,7 +1,7 @@
 package com.superywd.library.script.classloader.impl;
 
-import com.superywd.library.script.classloader.BinaryClass;
-import com.superywd.library.script.classloader.ClassFileManager;
+import com.superywd.library.script.compiler.BinaryClass;
+import com.superywd.library.script.compiler.ClassFileManager;
 import com.superywd.library.script.classloader.ScriptClassLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
