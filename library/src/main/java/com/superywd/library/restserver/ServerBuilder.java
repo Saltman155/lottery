@@ -148,4 +148,14 @@ public final class ServerBuilder {
     public String[] getScanPackages() {
         return scanPackages;
     }
+
+    public ServerBuilder acThreadCount(int count){
+        this.acThreadCount = count;
+        return this;
+    }
+
+    public ServerBuilder ioThreadCount(int count){
+        this.ioTreadCount = ioTreadCount;
+        return this;
+    }
 }

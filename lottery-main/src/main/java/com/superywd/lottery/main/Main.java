@@ -51,6 +51,8 @@ public class Main {
         //脚本引擎启动
         ScriptService.start();
         Server server = ServerBuilder.byPort(port).build();
+        //流式编程
+        ServerBuilder.byPort(port).acThreadCount(2).ioThreadCount(4).build();
         //网络服务启动
         server.start();
 

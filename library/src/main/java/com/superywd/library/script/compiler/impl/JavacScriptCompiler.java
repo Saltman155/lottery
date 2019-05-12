@@ -1,7 +1,7 @@
 package com.superywd.library.script.compiler.impl;
 
 import com.sun.tools.javac.api.JavacTool;
-import com.superywd.library.script.classloader.ClassFileManager;
+import com.superywd.library.script.compiler.ClassFileManager;
 import com.superywd.library.script.classloader.ScriptClassLoader;
 import com.superywd.library.script.compiler.CompilationResult;
 import com.superywd.library.script.compiler.ScriptCompiler;

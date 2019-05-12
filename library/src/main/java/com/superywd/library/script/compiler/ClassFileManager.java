@@ -1,5 +1,6 @@
-package com.superywd.library.script.classloader;
+package com.superywd.library.script.compiler;
 
+import com.superywd.library.script.classloader.ScriptClassLoader;
 import com.superywd.library.script.classloader.impl.ScriptClassLoaderImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,20 @@ public class ClassFileManager extends ForwardingJavaFileManager<JavaFileManager>
             }
         }
         return classLoader;
+    }
+
+    /**
+     * 获取文件对象的二进制名称，这里对于BinaryClass类型的统一返回创建时传入的name
+     * @param location      位置
+     * @param file          编译结果对象
+     * @return              二进制名称
+     */
+    @Override
+    public String inferBinaryName(Location location, JavaFileObject file) {
+        if (file instanceof BinaryClass) {
+            return ((BinaryClass) file).inferBinaryName(null);
+        }
+        return super.inferBinaryName(location, file);
     }
 
     /**
