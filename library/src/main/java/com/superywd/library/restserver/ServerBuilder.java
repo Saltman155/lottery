@@ -49,7 +49,6 @@ public final class ServerBuilder {
 
     private String[] scanPackages;
 
-
     {
         List<Properties> propertiesList = null;
         try {
@@ -66,7 +65,9 @@ public final class ServerBuilder {
         this.port = port;
     }
 
-    public static ServerBuilder byPort(int port){ return new ServerBuilder(port); }
+    public static ServerBuilder byPort(int port){
+        return new ServerBuilder(port);
+    }
 
     /**
      * 创建服务
