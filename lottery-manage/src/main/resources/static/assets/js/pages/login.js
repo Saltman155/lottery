@@ -73,7 +73,7 @@ var BasePagesLogin = function() {
                     data:formData,
                     success:function (data) {
                         if(data.code === 0){
-                            window.location.href = "./index.html";
+                            window.location.href = "./main.html";
                         }else{
                             alert(data.message);
                         }

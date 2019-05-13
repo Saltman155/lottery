@@ -3,22 +3,22 @@
         "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.superywd.lottery.manage.dao.AdminDao">
     <resultMap id="BaseResultMap" type="com.superywd.lottery.manage.model.TbAdmin">
-        <result column="login_email" property="email" jdbcType="VARCHAR" />
-        <result column="login_password" property="password" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="identity" property="identity" jdbcType="INTEGER"/>
         <association property="userInfo" column="user_id"
                      select="com.superywd.lottery.manage.dao.UserDao.selectUserById"/>
     </resultMap>
 
     <sql id="base_sql">
-        admin.login_email AS login_email,admin.login_password AS login_password,admin.identity AS `identity`
+        admin.email AS email,admin.password AS password,admin.identity AS `identity`
     </sql>
     <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT
           <include refid="base_sql"/>
         FROM admin
         WHERE
-          admin.login_email = #{email} AND
+          admin.email = #{email} AND
           admin.isvalid = 1
     </select>
 </mapper>

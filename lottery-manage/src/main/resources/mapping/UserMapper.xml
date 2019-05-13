@@ -10,14 +10,12 @@
         <result column="age" property="age" jdbcType="INTEGER"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
-        <result column="email" property="email" jdbcType="VARCHAR"/>
-        <result column="remark" property="remark" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="base_sql">
         `user`.id AS id,`user`.nick_name, AS nick_name,`user`.real_name AS real_name,
         `user`.gender AS gender,`user`.age AS age,`user`.address AS address,
-        `user`.phone AS phone,`user`.email AS email,`user`.remark AS remark
+        `user`.phone AS phone
     </sql>
 
     <!--根据用户id获取用户信息-->

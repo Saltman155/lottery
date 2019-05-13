@@ -18,16 +18,16 @@ spring:
       connection-test-query: SELECT 1
     master:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
+      jdbc-url: jdbc:mysql://47.97.251.221/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: root
-      password: scanf
+      password: 123456
     slave1:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
+      jdbc-url: jdbc:mysql://47.97.251.221/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: only_read
-      password: scanf
+      password: 123456
     slave2:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://47.106.66.7/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
+      jdbc-url: jdbc:mysql://47.97.251.221/lottery?characterEncoding=utf8&autoReconnect=true&useAffectedRows=true
       username: only_read
-      password: scanf
+      password: 123456

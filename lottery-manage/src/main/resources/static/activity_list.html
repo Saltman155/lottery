@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>活动管理</title>
+    <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="assets/js/plugins/datatables/jquery.dataTables.min.css">
+
+    <!-- Bootstrap and OneUI CSS framework -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+    <!-- END Stylesheets -->
+</head>
+<body>
+    <!-- Main Container -->
+    <main id="main-container">
+        <!-- Page Header -->
+        <div class="content bg-gray-lighter">
+            <div class="row items-push">
+                <div class="col-sm-7">
+                    <h1 class="page-heading">
+                        活动管理 <small>所有已经发布的活动列表</small>
+                    </h1>
+                </div>
+                <div class="col-sm-5 text-right hidden-xs">
+                    <ol class="breadcrumb push-10-t">
+                        <li>活动列表</li>
+                        <li><a class="link-effect" href="">活动管理</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- END Page Header -->
+
+        <!-- Page Content -->
+        <div class="content">
+            <!-- Dynamic Table Full -->
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="block-title">已发布活动</h3>
+                </div>
+                <div class="block-content">
+                    <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
+                    <table class="table table-bordered table-striped js-dataTable-full">
+                        <thead>
+                        <tr>
+                            <th class="text-center"></th>
+                            <th>活动名称</th>
+                            <th class="hidden-xs">创建者</th>
+                            <th class="hidden-xs" style="width: 15%;">开始时间</th>
+                            <th class="hidden-xs" style="width: 10%;">结束时间</th>
+                            <th class="text-center" style="width: 10%;">状态</th>
+                            <th class="text-center" style="width: 10%;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td class="font-w600">开心抽抽乐活动</td>
+                            <td class="hidden-xs">张三（zhangsan@superywd.com）</td>
+                            <td class="hidden-xs">2019年05月13日 9:00</td>
+                            <td class="hidden-xs">2019年06月12日 17:00</td>
+                            <td class="text-center"><span class="label label-success">运行中</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">2</td>
+                            <td class="font-w600">每日签到抽奖活动</td>
+                            <td class="hidden-xs">张三（zhangsan@superywd.com）</td>
+                            <td class="hidden-xs">2019年04月17日 9:00</td>
+                            <td class="hidden-xs">2019年06月17日 17:00</td>
+                            <td class="text-center"><span class="label label-success">运行中</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">3</td>
+                            <td class="font-w600">内部测试活动</td>
+                            <td class="hidden-xs">图灵（tulin@superywd.com）</td>
+                            <td class="hidden-xs">2019年03月11日 9:00</td>
+                            <td class="hidden-xs">2019年04月11日 17:00</td>
+                            <td class="text-center"><span class="label label-danger">已终止</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">4</td>
+                            <td class="font-w600">新用户免费抽奖活动</td>
+                            <td class="hidden-xs">admin（admin@superywd.com）</td>
+                            <td class="hidden-xs">2019年03月11日 9:00</td>
+                            <td class="hidden-xs">2019年07月11日 17:00</td>
+                            <td class="text-center"><span class="label label-warning">已暂停</span></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
+                                    <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END Page Content -->
+    </main>
+    <!-- END Main Container -->
+</body>
+
+<!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/core/jquery.slimscroll.min.js"></script>
+<script src="assets/js/core/jquery.scrollLock.min.js"></script>
+<script src="assets/js/core/jquery.appear.min.js"></script>
+<script src="assets/js/core/jquery.countTo.min.js"></script>
+<script src="assets/js/core/jquery.placeholder.min.js"></script>
+<script src="assets/js/core/js.cookie.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+<!-- Page JS Plugins -->
+<script src="assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+
+<!-- Page JS Code -->
+<script src="assets/js/pages/base_tables_datatables.js"></script>
+</body>
+</html>

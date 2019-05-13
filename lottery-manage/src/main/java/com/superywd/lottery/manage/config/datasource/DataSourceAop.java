@@ -21,7 +21,6 @@ public class DataSourceAop {
 
     private static final Logger logger = LoggerFactory.getLogger(DataSourceAop.class);
 
-
     @Pointcut("@annotation(com.superywd.lottery.manage.config.datasource.annotaion.Master)")
     public void writePointCut(){}
 
