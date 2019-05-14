@@ -49,7 +49,7 @@
                 </button>
                 <span>
                     <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar10.jpg" alt="">
-                    <span class="font-w600 push-10-l">这里是用户名</span>
+                    <span class="font-w600 push-10-l">用户名</span>
                 </span>
             </div>
             <div class="side-content remove-padding-t">
@@ -328,27 +328,19 @@
                 <div class="side-content">
                     <ul class="nav-main">
                         <li>
-                            <a class="active" href="#"><i class="si si-home"></i><span class="sidebar-mini-hide">系统主页</span></a>
+                            <a href="#"><i class="si si-home"></i><span class="sidebar-mini-hide">系统主页</span></a>
                         </li>
                         <!--活动管理-->
                         <li>
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                            <a id="load-activity-btn" data-toggle="nav-submenu" href="#">
                                 <i class="si si-grid"></i><span class="sidebar-mini-hide">活动管理</span>
                             </a>
-                            <ul>
-                                <li><a href="#">活动列表</a></li>
-                                <li><a href="#">活动登记</a></li>
-                            </ul>
                         </li>
                         <!--用户管理-->
                         <li>
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">
+                            <a id="load-user-btn" data-toggle="nav-submenu" href="#">
                                 <i class="si si-users"></i><span class="sidebar-mini-hide">用户管理</span>
                             </a>
-                            <ul>
-                                <li><a href="#">用户列表</a></li>
-                                <li><a href="#">待定操作</a></li>
-                            </ul>
                         </li>
                         <!--策略管理-->
                         <li>
@@ -428,16 +420,12 @@
     </header>
     <!-- 页面主体 -->
     <main id="main-container">
-        <!-- 主体头部 -->
         <div class="content bg-gray-lighter">
             <div class="row items-push">
                 <div class="col-sm-7">
                     <h1 class="page-heading">主页<small>&nbsp;&nbsp;&nbsp;这是一个朴实无华的主页...</small></h1>
                 </div>
             </div>
-        </div>
-        <!--主体内容-->
-        <div class="content">
         </div>
     </main>
     <!-- 页面底部 -->
@@ -464,16 +452,15 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">取消</button>
-                    <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" v-on:click="loginOut">确认</button>
+                    <button id="exit-system-btn" class="btn btn-sm btn-primary" type="button" data-dismiss="modal">确认</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
-<script src="assets/js/core/vue.min.js"></script>
 <script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/core/jquery.slimscroll.min.js"></script>
 <script src="assets/js/core/jquery.scrollLock.min.js"></script>

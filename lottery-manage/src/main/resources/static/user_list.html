@@ -3,13 +3,13 @@
     <div class="row items-push">
         <div class="col-sm-7">
             <h1 class="page-heading">
-                活动管理 <small>所有已经发布的活动列表</small>
+                用户管理 <small>所有已有用户列表</small>
             </h1>
         </div>
         <div class="col-sm-5 text-right hidden-xs">
             <ol class="breadcrumb push-10-t">
-                <li>活动列表</li>
-                <li><a class="link-effect" href="">活动管理</a></li>
+                <li>用户列表</li>
+                <li><a class="link-effect" href="">用户管理</a></li>
             </ol>
         </div>
     </div>
@@ -21,90 +21,70 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header">
-            <h3 class="block-title">已发布活动</h3>
+            <h3 class="block-title">系统用户信息</h3>
         </div>
         <div class="block-content">
             <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/activity_list.js -->
             <table class="table table-bordered table-striped js-dataTable-full">
                 <thead>
                 <tr>
-                    <th class="text-center"></th>
-                    <th>活动名称</th>
-                    <th class="hidden-xs">创建者</th>
-                    <th class="hidden-xs" style="width: 15%;">开始时间</th>
-                    <th class="hidden-xs" style="width: 10%;">结束时间</th>
-                    <th class="text-center" style="width: 10%;">状态</th>
+                    <th class="text-center">用户id</th>
+                    <th class="text-center">用户昵称</th>
+                    <th class="text-center">真实姓名</th>
+                    <th class="text-center">年龄</th>
+                    <th class="text-center">电话号码</th>
                     <th class="text-center" style="width: 10%;">操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="text-center">1</td>
-                    <td class="font-w600">开心抽抽乐活动</td>
-                    <td class="hidden-xs">张三（zhangsan@superywd.com）</td>
-                    <td class="hidden-xs">2019年05月13日 9:00</td>
-                    <td class="hidden-xs">2019年06月12日 17:00</td>
-                    <td class="text-center"><span class="label label-success">运行中</span></td>
+                    <td class="text-center">145</td>
+                    <td class="text-center">张三</td>
+                    <td class="text-center">张三链子</td>
+                    <th class="text-center">54</th>
+                    <th class="text-center">13900000000</th>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整">
-                                <!--<i class="fa fa-pencil"></i>-->
-                                <a tabindex="-1" data-toggle="modal" data-target="#activity-add-modify-modal" href="#">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="个人信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#user-info-modal" href="#"><i class="fa fa-pencil"></i></a>
                             </button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情">
-
-                                <a tabindex="-1" data-toggle="modal" data-target="#activity-active-list-modal" href="#">
-                                    <i class="fa fa-info-circle"></i>
-                                </a>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="抽奖信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#user-active-list-modal" href="#"><i class="fa fa-info-circle"></i></a>
                             </button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-center">2</td>
-                    <td class="font-w600">每日签到抽奖活动</td>
-                    <td class="hidden-xs">张三（zhangsan@superywd.com）</td>
-                    <td class="hidden-xs">2019年04月17日 9:00</td>
-                    <td class="hidden-xs">2019年06月17日 17:00</td>
-                    <td class="text-center"><span class="label label-success">运行中</span></td>
+                    <td class="text-center">146</td>
+                    <td class="text-center">李四</td>
+                    <td class="text-center">李四爷</td>
+                    <th class="text-center">47</th>
+                    <th class="text-center">13600000000</th>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="个人信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#activity-add-modify-modal" href="#"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="抽奖信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#activity-active-list-modal" href="#"><i class="fa fa-info-circle"></i></a>
+                            </button>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-center">3</td>
-                    <td class="font-w600">内部测试活动</td>
-                    <td class="hidden-xs">图灵（tulin@superywd.com）</td>
-                    <td class="hidden-xs">2019年03月11日 9:00</td>
-                    <td class="hidden-xs">2019年04月11日 17:00</td>
-                    <td class="text-center"><span class="label label-danger">已终止</span></td>
+                    <td class="text-center">147</td>
+                    <td class="text-center">王五</td>
+                    <td class="text-center">王五麻子</td>
+                    <th class="text-center">35</th>
+                    <th class="text-center">13500000000</th>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center">4</td>
-                    <td class="font-w600">新用户免费抽奖活动</td>
-                    <td class="hidden-xs">admin（admin@superywd.com）</td>
-                    <td class="hidden-xs">2019年03月11日 9:00</td>
-                    <td class="hidden-xs">2019年07月11日 17:00</td>
-                    <td class="text-center"><span class="label label-warning">已暂停</span></td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动调整"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="活动详情"><i class="fa fa-info-circle"></i></button>
-                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="终止活动"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="个人信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#activity-add-modify-modal" href="#"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <button class="btn btn-sm btn-default" type="button" data-toggle="tooltip" title="抽奖信息查询">
+                                <a tabindex="-1" data-toggle="modal" data-target="#activity-active-list-modal" href="#"><i class="fa fa-info-circle"></i></a>
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -116,7 +96,7 @@
 
 
 <!--活动修改或新建的模态框-->
-<div class="modal fade" id="activity-add-modify-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="user-info-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-popout" style="width: 1400px">
         <div class="modal-content">
             <div class="block block-themed block-transparent remove-margin-b">
@@ -278,7 +258,7 @@
 
 
 <!--活动抽奖结果列表-->
-<div class="modal fade" id="activity-active-list-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="user-active-list-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-popout" style="width: 1400px">
         <div class="modal-content">
             <div class="block block-themed block-transparent remove-margin-b">
@@ -288,7 +268,7 @@
                             <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
                         </li>
                     </ul>
-                    <h3 class="block-title">活动详情</h3>
+                    <h3 class="block-title">个人抽奖记录</h3>
                 </div>
                 <div class="block-content">
                     <div class="block block-bordered">
@@ -297,8 +277,8 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center" style="width: 20%;">#</th>
-                                    <th class="text-center" style="width: 20%;">用户ID</th>
-                                    <th class="text-center" style="width: 20%;">用户名称</th>
+                                    <th class="text-center" style="width: 20%;">活动ID</th>
+                                    <th class="text-center" style="width: 20%;">活动名称</th>
                                     <th class="text-center" style="width: 20%;">抽奖时间</th>
                                     <th class="text-center" style="width: 20%;">抽奖结果</th>
                                 </tr>
@@ -306,65 +286,37 @@
                                 <tbody>
                                 <tr>
                                     <td class="text-center">1</td>
-                                    <td class="text-center">145</td>
-                                    <td class="text-center">张三</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">开心抽抽乐活动</td>
                                     <td class="text-center">2019-5-14 12:13:56</td>
                                     <td class="text-center"><span class="label label-default">未中奖</span></td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">2</td>
-                                    <td class="text-center">146</td>
-                                    <td class="text-center">李四</td>
-                                    <td class="text-center">2019-5-14 12:14:21</td>
-                                    <td class="text-center"><span class="label label-default">未中奖</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">145</td>
-                                    <td class="text-center">张三</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">开心抽抽乐活动</td>
                                     <td class="text-center">2019-5-14 12:14:13</td>
                                     <td class="text-center"><span class="label label-default">未中奖</span></td>
                                 </tr>
                                 <tr>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">开心抽抽乐活动</td>
+                                    <td class="text-center">2019-5-14 12:14:30</td>
+                                    <td class="text-center"><span class="label label-default">未中奖</span></td>
+                                </tr>
+                                <tr>
                                     <td class="text-center">4</td>
-                                    <td class="text-center">145</td>
-                                    <td class="text-center">张三</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">开心抽抽乐活动</td>
                                     <td class="text-center">2019-5-14 12:14:30</td>
                                     <td class="text-center"><span class="label label-default">未中奖</span></td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">5</td>
-                                    <td class="text-center">145</td>
-                                    <td class="text-center">张三</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">开心抽抽乐活动</td>
                                     <td class="text-center">2019-5-14 12:14:30</td>
-                                    <td class="text-center"><span class="label label-default">未中奖</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">6</td>
-                                    <td class="text-center">145</td>
-                                    <td class="text-center">张三</td>
-                                    <td class="text-center">2019-5-14 12:14:30</td>
-                                    <td class="text-center"><span class="label label-default">未中奖</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">7</td>
-                                    <td class="text-center">146</td>
-                                    <td class="text-center">李四</td>
-                                    <td class="text-center">2019-5-14 13:34:30</td>
-                                    <td class="text-center"><span class="label label-default">未中奖</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">8</td>
-                                    <td class="text-center">147</td>
-                                    <td class="text-center">王五</td>
-                                    <td class="text-center">2019-5-14 13:47:47</td>
-                                    <td class="text-center"><span class="label label-success">三等奖</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">9</td>
-                                    <td class="text-center">147</td>
-                                    <td class="text-center">王五</td>
-                                    <td class="text-center">2019-5-14 14:23:52</td>
                                     <td class="text-center"><span class="label label-default">未中奖</span></td>
                                 </tr>
                                 </tbody>
