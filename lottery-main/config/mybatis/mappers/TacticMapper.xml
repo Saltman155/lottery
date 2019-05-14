@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.superywd.lottery.main.dao.TacticDao">
+    <resultMap id="BaseResultMap" type="com.superywd.lottery.main.model.TbTactic">
+        <id column="id" jdbcType="INTEGER" javaType="Integer" property="id"/>
+        <result column="title" jdbcType="VARCHAR" javaType="String" property="title"/>
+        <result column="description" jdbcType="VARCHAR" javaType="String" property="description"/>
+        <association property="author" column="author" select="com.superywd.lottery.main.dao.AdminDao.selectAdminByEmail"/>
+    </resultMap>
+
+    <sql id="base_sql">
+        tactic.id AS id,tactic.title AS title,tactic.description AS description,tactic.author AS author
+    </sql>
+
+    <select id="selectTacticById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+          <include refid="base_sql" />
+        FROM tactic
+        WHERE
+          tactic.id = #{id} AND
+          tactic.isvalid = 1
+    </select>
+
+</mapper>

@@ -3,6 +3,7 @@ jQuery(function() {
     $("#exit-system-btn").on("click",$.exitSystem);
     $("#load-activity-btn").on("click",$.loadActivityList);
     $("#load-user-btn").on("click",$.loadUserBtn);
+    $("#script-btn").on("click",$.scriptBtn);
     // $("#activity-register-btn").on("click",)
 });
 
@@ -39,4 +40,7 @@ $.activityRegister = function(){
     // $("#main-container").load("index.html");
 }
 
-
+$.scriptBtn = function () {
+    console.log("载入策略列表");
+    $("#main-container").load("script_list.html");
+}

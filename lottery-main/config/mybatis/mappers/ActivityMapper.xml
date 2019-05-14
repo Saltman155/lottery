@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.superywd.lottery.main.dao.ActivityDao">
+    <!--基本对象映射类-->
+    <resultMap id="BaseResultMap" type="com.superywd.lottery.main.model.TbActivity">
+        <id column="id" jdbcType="INTEGER" javaType="Integer" property="id"/>
+        <result column="title" jdbcType="VARCHAR" javaType="String" property="title"/>
+        <result column="description" jdbcType="VARCHAR" javaType="String" property="description"/>
+        <result column="draw_number" jdbcType="INTEGER" javaType="Integer" property="drawNumber"/>
+        <result column="start_time" jdbcType="TIMESTAMP" javaType="Date" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" javaType="Date" property="endTime"/>
+        <association property="awardList" column="id" select="com.superywd.lottery.main.dao.AwardDao.selectAwardByActivityId"/>
+        <association property="creator" column="creator" select="com.superywd.lottery.main.dao.AdminDao.selectAdminByEmail"/>
+        <association property="tactic" column="tactic_id" select="com.superywd.lottery.main.dao.TacticDao.selectTacticById"/>
+    </resultMap>
+
+    <sql id="base_sql">
+        activity.id AS id,activity.tactic_id AS tactic_id,activity.title AS title,
+        activity.description AS description,activity.draw_number AS draw_number,
+        activity.creator AS creator,activity.start_time AS start_time,activity.end_time AS end_time
+    </sql>
+    <select id="selectActivityById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      SELECT
+        <include refid="base_sql"/>
+      FROM activity
+      WHERE
+        activity.id = #{id} AND
+        activity.isvalid = 1
+    </select>
+
+
+</mapper>

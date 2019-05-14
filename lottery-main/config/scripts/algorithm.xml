@@ -1,12 +1,5 @@
 <scriptList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="./contexts.xsd">
-    <!--自定义算法脚本目录-->
-    <scriptInfo root="./config/scripts/algorithms/custom/">
-        <library>./config/scripts/otherLibrary/</library>
-        <compiler>com.superywd.library.script.compiler.impl.JavacScriptCompiler</compiler>
-        <childScriptInfos root="xxxxx"/>
-        <childScriptInfos root="xxxxx"/>
-    </scriptInfo>
     <!--系统自带算法脚本目录-->
     <scriptInfo root="./config/scripts/algorithms/system/"/>
 </scriptList>
