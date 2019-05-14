@@ -20,6 +20,7 @@
         activity.description AS description,activity.draw_number AS draw_number,
         activity.creator AS creator,activity.start_time AS start_time,activity.end_time AS end_time
     </sql>
+
     <select id="selectActivityById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
       SELECT
         <include refid="base_sql"/>

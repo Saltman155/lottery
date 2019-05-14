@@ -23,7 +23,10 @@ public class ActivityDao extends AbstractDao {
             if(session != null){ session.rollback(); }
             return null;
         }finally {
-            if(session != null){ session.commit(); }
+            if(session != null){
+                session.commit();
+                session.close();
+            }
         }
     }
 }

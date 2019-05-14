@@ -1,6 +1,8 @@
 package com.superywd.lottery.main.service;
 
 import com.superywd.lottery.main.dao.ActivityDao;
+import com.superywd.lottery.main.model.TbActivity;
+import com.superywd.lottery.main.model.dto.ActivityInfoDTO;
 
 /**
  * 业务处理
@@ -10,7 +12,12 @@ import com.superywd.lottery.main.dao.ActivityDao;
 public class LotteryService {
 
     public Object getActivityInfo(int activityId){
-        return ActivityDao.getActivityById(activityId);
+        TbActivity activity = ActivityDao.getActivityById(activityId);
+        return activity == null ? null : new ActivityInfoDTO(activity);
+    }
+
+    public Object getUserActiveRecord(int activityId,int userId){
+        return null;
     }
 
 }
