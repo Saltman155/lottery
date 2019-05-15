@@ -1,8 +1,9 @@
 Manifest-Version: 1.0
 Class-Path: netty-all-4.1.34.Final.jar slf4j-api-1.7.25.jar logback-co
- re-1.2.3.jar mysql-connector-java-8.0.15.jar jackson-annotations-2.9.
- 0.jar jedis-2.9.0.jar HikariCP-3.3.1.jar logback-classic-1.2.3.jar pr
- otobuf-java-3.6.1.jar commons-io-2.6.jar commons-pool2-2.4.2.jar jack
- son-databind-2.9.8.jar jackson-core-2.9.8.jar mybatis-3.4.6.jar
+ re-1.2.3.jar mysql-connector-java-8.0.15.jar tools.jar jackson-annota
+ tions-2.9.0.jar jedis-2.9.0.jar HikariCP-3.3.1.jar logback-classic-1.
+ 2.3.jar protobuf-java-3.6.1.jar commons-io-2.6.jar commons-pool2-2.4.
+ 2.jar jackson-databind-2.9.8.jar jackson-core-2.9.8.jar mybatis-3.4.6
+ .jar
 Main-Class: com.superywd.lottery.main.Main
 
