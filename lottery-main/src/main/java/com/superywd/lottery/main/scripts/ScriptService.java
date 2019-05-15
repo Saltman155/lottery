@@ -29,6 +29,7 @@ public class ScriptService {
             logger.error("启动脚本引擎失败！");
             throw new Error(e);
         }
+        logger.info("抽奖脚本编译模块初始化成功！");
 
     }
 

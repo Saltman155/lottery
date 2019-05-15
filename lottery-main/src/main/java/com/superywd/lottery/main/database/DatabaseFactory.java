@@ -42,6 +42,7 @@ public class DatabaseFactory {
             //从文件中加载sqlSessionFactory
             InputStream inputStream = Resources.getUrlAsStream(DataBaseConfig.MYBATIS_CONFIG_PATH);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            logger.info("数据库连接服务已创建！");
         } catch (Exception e) {
             logger.error("mybatis加载错误！");
             throw new Error(e);

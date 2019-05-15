@@ -42,11 +42,13 @@ public class Main {
                 logger.error(e.getMessage(),e);
             }
         }
+        logger.info("日志配置初始化成功！");
     }
 
 
 
     public static void main(String[] args) {
+        logoPrint();
         initLogger();
         loadParameters(args);
         //脚本引擎启动
@@ -79,5 +81,12 @@ public class Main {
                     break;
             }
         }
+    }
+
+    private static void logoPrint(){
+        System.out.println("******************************************************************************");
+        System.out.println("*                            抽奖活动管理框架 1.00版                          *");
+        System.out.println("******************************************************************************");
+        System.out.println("******************************************************************************");
     }
 }
