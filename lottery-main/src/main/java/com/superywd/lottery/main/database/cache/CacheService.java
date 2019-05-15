@@ -9,13 +9,15 @@ public class CacheService {
 
     private CacheTool tool;
 
-    private CacheService(){
-
-    }
+    private CacheService(){ }
 
 
     public static CacheTool getTool() {
         return getInstance().tool;
+    }
+
+    public void init(){
+
     }
 
     private static final class SingletonHolder {
@@ -29,4 +31,5 @@ public class CacheService {
     public static CacheService getInstance(){
         return SingletonHolder.INSTANCE;
     }
+
 }

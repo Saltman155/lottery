@@ -6,4 +6,5 @@ package com.superywd.lottery.main.database.cache;
  * @date 2019/5/15 2:05
  */
 public abstract class CacheTool {
+
 }

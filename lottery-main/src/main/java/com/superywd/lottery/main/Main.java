@@ -7,6 +7,8 @@ import ch.qos.logback.core.util.StatusPrinter;
 import com.superywd.library.restserver.Server;
 import com.superywd.library.restserver.ServerBuilder;
 import com.superywd.lottery.main.database.DatabaseFactory;
+import com.superywd.lottery.main.database.cache.CacheService;
+import com.superywd.lottery.main.model.config.ConfigCenter;
 import com.superywd.lottery.main.scripts.ScriptService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,17 +52,21 @@ public class Main {
     public static void main(String[] args) {
         logoPrint();
         initLogger();
+        //处理启动参数
         loadParameters(args);
+        //载入系统配置
+        ConfigCenter.loadConfig();
         //脚本引擎启动
-        ScriptService.start();
-        //数据库连接初始化
+        ScriptService.getInstance().start();
+        //MySQL数据库连接初始化
         DatabaseFactory.init();
+        //Redis数据库连接初始化
+        CacheService.getInstance().init();
         Server server = ServerBuilder.byPort(port).build();
         //流式编程
         ServerBuilder.byPort(port).acThreadCount(2).ioThreadCount(4).build();
         //网络服务启动
         server.start();
-
     }
 
     private static void loadParameters(String[] args){
@@ -84,9 +90,9 @@ public class Main {
     }
 
     private static void logoPrint(){
-        System.out.println("******************************************************************************");
-        System.out.println("*                            抽奖活动管理框架 1.00版                          *");
-        System.out.println("******************************************************************************");
-        System.out.println("******************************************************************************");
+        System.err.println("******************************************************************************");
+        System.err.println("*                            抽奖活动管理框架 0.01版                          *");
+        System.err.println("******************************************************************************");
+        System.err.println("******************************************************************************");
     }
 }

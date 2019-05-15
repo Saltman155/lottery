@@ -31,18 +31,10 @@ public class DatabaseFactory {
             return;
         }
         try {
-            List<Properties> propertiesList = null;
-            try {
-                propertiesList = PropertiesUtil.loadAllFromDirectory(new File("./config"));
-            }catch (Exception e){
-                logger.info("加载数据库配置文件失败，载入默认配置...");
-                propertiesList = new ArrayList<>();
-            }
-            ConfigurableProcessor.process(DataBaseConfig.class,propertiesList);
             //从文件中加载sqlSessionFactory
             InputStream inputStream = Resources.getUrlAsStream(DataBaseConfig.MYBATIS_CONFIG_PATH);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-            logger.info("数据库连接服务已创建！");
+            logger.info("MySQL数据库连接服务已创建！");
         } catch (Exception e) {
             logger.error("mybatis加载错误！");
             throw new Error(e);
@@ -50,10 +42,8 @@ public class DatabaseFactory {
     }
 
 
-
     public static SqlSessionFactory getSqlSessionFactory(){
         return sqlSessionFactory;
     }
-
 
 }

@@ -20,4 +20,8 @@ public class LotteryService {
         return null;
     }
 
+    public Object lotteryDraw(int activityId,int userId){
+        return null;
+    }
+
 }

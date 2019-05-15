@@ -62,4 +62,25 @@ public class LotteryController {
         return result;
     }
 
+
+    /**
+     * 用户抽奖接口
+     * @param activityId    活动id
+     * @param userId        用户id
+     * @return
+     */
+    @RequestMapping(path = "/lotteryDraw")
+    public Object lotteryDraw(
+            @PathVariable(name = "activityId")Integer activityId,
+            @RequestParam(name = "userId")Integer userId){
+        Object result = null;
+        try{
+            Object data = lotteryService.lotteryDraw(activityId,userId);
+            result = ResultUtil.successResult(data);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            result = ResultUtil.errorResult(-1,"抽奖失败！");
+        }
+        return result;
+    }
 }
